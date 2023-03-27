@@ -1,16 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BookStore.DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DataAccess.Data
 {
     public class DataContext: DbContext 
     { 
-        public DbSet<Genre> Genre {get;set;}
+        public DbSet<Ganre> Genre {get;set;}
         public DbSet<Author> Author {get;set;}
         public DbSet<Book> Book {get;set;}
-        public DbSet<Prices> Price {get; set;}
+        public DbSet<Orders> Orders {get; set; }
+        public DbSet<Magazine> Magazines {get; set; }
+        public DbSet<Users> Users { get; set; }
+        
 
 
         public DataContext(DbContextOptions options): base (options)
@@ -29,7 +30,12 @@ namespace BookStore.DataAccess.Data
     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-         base.OnModelCreating(modelBuilder);   
+            base.OnModelCreating(modelBuilder);  
+            modelBuilder.Entity<Orders>(builder =>
+                 {
+                     builder.HasNoKey();
+                     builder.ToTable("MY_ENTITY");
+                });
         }
 
         

@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.DataAccess.Models
 {
@@ -11,7 +8,11 @@ namespace BookStore.DataAccess.Models
         public string Title {get; set;}
         public string TotalPages {get; set;}
         public string AuthorId { get; set; }
-        public string GenreId {get; set;}
+        public Author Author {get; set;}
+        public string GanreId {get; set;}
+        public Ganre Ganre {get; set;}
+        public double Price {get; set;}
+        public double SalePrice { get; set; }
 
     }
 }

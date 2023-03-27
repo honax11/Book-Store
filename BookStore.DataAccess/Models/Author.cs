@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace BookStore.DataAccess.Models
 {
-    public class Author
+    public class Author : BaseEntety
     {
-        public string Id {get; set;}
-        public string AuthorName {get; set;}
+       public Ganre Ganre {get; set;}
+       public Book Book {get; set;}
+      //  public List<Genre> Ganres { get; set; }
          
     }
 }
