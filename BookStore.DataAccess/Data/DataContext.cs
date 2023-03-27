@@ -5,31 +5,33 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Data
 {
-  public class DataContext : DbContext
-{ 
-    public DbSet<Genre> Genres { get; set; }
-    public DbSet<Author> Authors { get; set; }
-    public DbSet<Book> Books { get; set; }
-    public DbSet<Prices> Prices { get; set; }
+    public class DataContext: DbContext
+    { 
+        public DbSet<Genre> Genre {get;set;}
+        public DbSet<Author> Author {get;set;}
+        public DbSet<Book> Book {get;set;}
+        public DbSet<Prices> Price {get; set;}
 
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
-    {
 
+        public DataContext(DbContextOptions options): base (options)
+        {
+
+        }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseSqlite();
+            }
+        }
+    
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+         base.OnModelCreating(modelBuilder);   
+        }
+
+        
     }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-
-        modelBuilder.Entity<Book>()
-            .HasOne(b => b.Author)
-            .WithMany(a => a.Books)
-            .HasForeignKey(b => b.AuthorId);
-
-        modelBuilder.Entity<Book>()
-            .HasOne(b => b.Genre)
-            .WithMany(g => g.Books)
-            .HasForeignKey(b => b.GenreId);
-    }
-}
 }
