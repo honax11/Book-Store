@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Data
 {
-    public class DataContext: DbContext
+    public class DataContext: DbContext 
     { 
         public DbSet<Genre> Genre {get;set;}
         public DbSet<Author> Author {get;set;}
