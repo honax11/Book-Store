@@ -1,6 +1,15 @@
+global using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
+builder.Services
+    .AddEntityFrameworkSqlite()
+    .AddDbContext<DataContext>(opt =>
+    opt.UseSqlite( connectionString,
+        b => b.MigrationsAssembly("BookStore.DataAccess")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
