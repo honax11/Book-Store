@@ -27,7 +27,7 @@ import Page404 from "shared/components/page-404/Page404";
 import { ClicksContainer } from "container/clicks/ClicksContainer";
 import { LocationsContainer } from "container/location/LocationsContainer";
 import { CustomerContainer } from "container/customer/CustomerContainer";
-import { CustomersContainer } from "container/customers/CustomersContainer";
+import { WritersContainer } from "container/writers/WritersContainer";
 import { PreorderdProductsContainer } from "container/pre-ordered-products/PreorderdProductsContainer";
 import { DashboardContainer } from "container/dashboard/DashboardContainer";
 import { DesignerContainer } from "container/designer/DesignerContainer";
@@ -35,7 +35,7 @@ import { BannerContainer } from "container/banner/BannerContainer";
 import { ArticleContainer } from "container/articles/ArticleContainer";
 import { OrderContainer } from "container/order/OrderContainer";
 import { OrdersContainer } from "container/orders/OrdersContainer";
-import { CategoryContainer } from "container/category/CategoryContainer";
+import { GenresContainer } from "container/category/GenresContainer";
 import { DesignersContainer } from "container/designers/DesignersContainer";
 import { ProductsContainer } from "container/product/ProductsContainer";
 import { ProductContainer } from "container/product/ProductContainer";
@@ -52,7 +52,7 @@ export const AppNavigation = () => (
         <Route path={URL} element={<Rout />}>
             [
             <Route index key={DASHBOARD_URL} element={<DashboardContainer />} />,
-            <Route path={SIZE_CATEGORY} key={SIZE_CATEGORY} element={<CategoryContainer />} />,
+            <Route path={SIZE_CATEGORY} key={SIZE_CATEGORY} element={<GenresContainer />} />,
             <Route path={SIZE_URL} key={SIZE_URL} element={<SizesContainer />} />,
             <Route path={DESIGNERS_URL} key={DESIGNERS_URL} element={<DesignersContainer />} />,
             <Route path={PRODUCTS_URL} key={PRODUCTS_URL} element={<ProductsContainer />} />,
@@ -63,7 +63,7 @@ export const AppNavigation = () => (
             <Route path={DESIGNER_URL} key={DESIGNER_URL} element={<DesignerContainer />} />,
             <Route path={BLOG_URL} key={BLOG_URL} element={<ArticlesContainer />} />,
             <Route path={ARTICLE_URL} key={ARTICLE_URL} element={<ArticleContainer />} />,
-            <Route path={CUSTOMERS_URL} key={CUSTOMERS_URL} element={<CustomersContainer />} />,
+            <Route path={CUSTOMERS_URL} key={CUSTOMERS_URL} element={<WritersContainer />} />,
             <Route path={CUSTOMER_URL} key={CUSTOMER_URL} element={<CustomerContainer />} />,
             <Route path={PREORDERED_PRODUCT_URL} key={PREORDERED_PRODUCT_URL} element={<PreorderdProductsContainer />} />
             <Route path={LOCATIONS} key={LOCATIONS} element={<LocationsContainer />} />

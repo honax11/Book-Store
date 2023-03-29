@@ -3,7 +3,7 @@ import { Category } from "shared/models/category/Category";
 import { get } from "shared/services/HTTPUserService";
 import { CategoryTable } from "../../shared/components/tables/CategoryTable";
 
-export const CategoryContainer = () => {
+export const GenresContainer = () => {
     const [categories, setCategories] = useState<Category[]>([]);
 
     const getAllCategories = () => {

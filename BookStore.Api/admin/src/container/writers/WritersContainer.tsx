@@ -4,7 +4,7 @@ import { get } from "shared/services/Service";
 import { Customer } from "shared/models/customers/Customer";
 import { CustomerType } from "shared/models/enums/CustomerType";
 
-export const CustomersContainer = () => {
+export const WritersContainer = () => {
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [type, setType] = useState(CustomerType.None)
 
