@@ -1,0 +1,97 @@
+.filters {
+    &__window {
+        padding-top: 200px;
+    }
+
+    &__active {
+        width: 95%;
+    }
+
+    &__pt0 {
+        padding-top: 0;
+    }
+
+    &__bcg {
+        &:before {
+            background-color: gray !important;
+        }
+    }
+
+    &__title {
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        font-size: 13px;
+        background-color: gray;
+    }
+
+    &__titleText {
+        font-size: 16px !important;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+    }
+
+    &__body {
+        overflow: hidden;
+        overflow-y: auto;
+        max-height: 570px;
+        padding: 1rem;
+    }
+
+    &__list {
+        font-weight: 700;
+        padding: 20px;
+        border-bottom: 1px solid gray;
+
+        &::before {
+            background: url(../../../../assets/icons/plus.svg);
+            float: right;
+            background-size: 100% 100%;
+            content: "";
+            display: block;
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__lists {
+        padding: 20px 0 20px 20px;
+        border-bottom: 1px solid #000;
+    }
+
+    &__listsDone {
+        background-color: rgb(206, 206, 206);
+        font-weight: 700;
+        padding: 20px 0 20px 20px;
+        border-bottom: 1px solid #000;
+        padding-right: 9px;
+
+        &:before {
+            background: url(../../../../assets/icons/done.svg);
+            background-color: rgb(206, 206, 206);
+            float: right;
+            background-size: 100% 100%;
+            content: "";
+            display: block;
+            margin-top: 2px;
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__left {
+        &:before {
+            content: url(../../../../assets/icons/left.png);
+            float: left;
+            vertical-align: center;
+        }
+    }
+}

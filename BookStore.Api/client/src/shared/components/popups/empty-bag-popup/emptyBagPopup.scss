@@ -1,0 +1,30 @@
+.emptyBag {
+    &__body {
+        padding: 20px;
+    }
+
+    &__message {
+        padding-top: 200px;
+    }
+
+    &__text {
+        font-size: 16px !important;
+    }
+
+    &__pt {
+        padding-top: 15px;
+    }
+
+    &__btnPosition {
+        justify-content: start !important;
+    }
+
+    &__btn {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: white;
+        }
+    }
+}

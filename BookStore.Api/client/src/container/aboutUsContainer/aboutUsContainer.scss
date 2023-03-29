@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+@import "../../styles/media";
+
+.about-us {
+    p{
+        padding: 0 10px;
+        font-size: 15px;
+    }
+    min-height: 500px;
+    * {
+        font-family: "Manrope";
+        font-size: 20px;
+    }
+
+    &__media {
+        padding-bottom: 20px;
+        text-indent: 0;
+        font-size: 25px;
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+    &__text {
+        padding-top: 30px;
+    }
+}

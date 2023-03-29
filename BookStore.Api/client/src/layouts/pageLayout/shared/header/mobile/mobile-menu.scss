@@ -1,0 +1,74 @@
+.sidebar-menu {
+  overflow-y: scroll;
+  background-color: #fff;
+  height: 1500%;
+  position: absolute;
+  padding-top: 24px;
+  top: 45px;
+  width: 100%;
+  padding-left: 13px;
+  padding-right: 18px;
+  z-index: 9997;
+
+  &__micro-buttons {
+    font-family: DINPro-Medium;
+    font-size: 16px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -.1px;
+    color: #1d1d1b;
+    padding: 0 0 15px;
+    text-transform: uppercase;
+    text-decoration: none;    
+    min-width: 95%;
+  }
+
+  &__micro-button-menu {
+    margin-left: 20px;
+    font-family: DINPro-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -.2px;
+    color: #1d1d1b;
+    padding: 10px 0 0 0;
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+  }
+
+  &__plus {
+    &:before {
+      content: url(./right.svg);
+      font-weight: 100;
+      float: right;
+    }
+  }
+
+  &__active{
+    &:before {
+      content: url(./down-black.svg);
+      font-weight: 100;
+      float: right;
+    }
+  }
+
+  &__pb{
+    margin-bottom: 15px;
+    text-decoration: none;
+  }
+
+  &__mainBtn{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -12px;
+  }
+}
+
+.header .header-placeholder .sidebar-menu .mobile {
+  padding: 20px 20px 60px;
+}

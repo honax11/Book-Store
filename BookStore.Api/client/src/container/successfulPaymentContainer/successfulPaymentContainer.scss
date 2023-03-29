@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+@import "../../styles/media.scss";
+
+.successful-payment {
+    &__h1 {
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__h2 {
+        padding-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__h3 {
+        padding-top: 15px;
+        display: flex;
+        justify-content: center;
+        text-decoration: underline;
+    }
+
+    &__return {
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__wraper {
+        display: flex;
+        justify-content: center;
+        color: black;
+        text-decoration: none;
+        font-weight: 700;
+
+        &:hover {
+            color: black;
+        }
+    }
+}

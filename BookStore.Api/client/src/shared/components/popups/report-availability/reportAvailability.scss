@@ -1,0 +1,71 @@
+.reportAvailability {
+    padding: 20px;
+    height: 100%;
+
+    &__width {
+        border: 1px;
+        width: 500px;
+        max-width: 90%;
+        border-radius: 4px;
+        border: 1px solid rgb(0, 0, 0);
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 4px;
+        margin-bottom: 4px;
+        border-bottom: 1px solid #6d6d6d;
+
+        .btn-close {
+            background-color: #fff;
+
+            &:before {
+                content: url(../../../../assets/icons/closeDark.svg);
+            }
+        }
+    }
+
+    &__bodyInputText {
+        margin-bottom: 2px;
+    }
+
+    &__headerText {
+        font-size: 19px;
+        font-family: Manrope;
+        margin-bottom: 0;
+
+    }
+
+    &__bodyText {
+        font-size: 14px;
+    }
+
+    &__input {
+        border: 1px solid gray;
+        width: 100%;
+        height: 40px;
+        font-size: 15px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        padding-left: 8px;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+
+        .btn-dark {
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            height: 40px;
+            width: 120px;
+        }
+    }
+}
+
+.validation-color {
+    color: red;
+}

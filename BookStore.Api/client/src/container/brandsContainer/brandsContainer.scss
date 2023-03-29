@@ -1,0 +1,127 @@
+@import "../../styles/variables.scss";
+@import "../../styles/media";
+
+.brands {
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #D9D9D9;
+        margin: 0px 10px 24px;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &__letterIsActiv {
+        cursor: text;
+        font-family: 'Oswald';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 58px;
+        color: #E0E0E0;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            color: #E0E0E0;
+        }
+    }
+
+    &__letterActiv {
+        cursor: pointer;
+        font-family: 'Oswald';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 58px;
+        color: black;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    &__brands {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &__imageBrand {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 20px;
+        grid-gap: 24px;
+        padding-bottom: 24px;
+    }
+
+    &__imagePicture {
+        width: 100%;
+    }
+
+    &__brand {
+        padding: 0 10px;
+        text-decoration: none;
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 20px;
+        padding-bottom: 24px;
+        color: $black;
+
+        :hover {
+            color: $black
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .brands {
+        &__title-brands {
+            padding: 0;
+        }
+
+        &__header {
+            display: none;
+        }
+
+        &__brands {
+            flex-direction: column;
+        }
+
+        &__title {
+            display: none;
+        }
+
+        &__brand {
+            padding-top: 15px;
+        }
+
+        &__media {
+            padding: 0;
+        }
+    }
+}
+
+.clothes {
+    &__title {
+        padding-left: 20px;
+        font-size: 16px;
+        color: rgb(15, 14, 14);
+    }
+}
+
+
+@media (max-width: 576px) {
+    .clothes__title {
+        padding-right: 25px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+    }
+}

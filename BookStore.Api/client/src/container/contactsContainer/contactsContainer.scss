@@ -1,0 +1,62 @@
+@import "../../styles/variables.scss";
+@import "../../styles/media";
+
+.contacts {
+  * {
+    font-family: "Manrope";
+    font-size: 20px;
+  }
+
+  a {
+    color: black;
+  }
+
+  p {
+    padding: 0 10px;
+    font-size: 15px;
+  }
+
+  li,
+  a {
+    font-size: 15px;
+  }
+
+  &__general {
+    font-size: 15px;
+  }
+
+  &__title {
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+  }
+
+  &__media {
+    min-height: 500px;
+  }
+
+  &__list {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    list-style: inside;
+  }
+}
+
+.social-icon {
+  zoom: 200%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+
+  &:hover {
+    cursor: pointer;
+    color: black;
+  }
+}
+
+.social-icon-color {
+  color: black;
+}
