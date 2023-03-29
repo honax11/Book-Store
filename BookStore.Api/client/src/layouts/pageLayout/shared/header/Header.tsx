@@ -67,10 +67,9 @@ const Header = (props: Props) => {
                                 className="header__newLogo"
                             /></Link>
                         <div className="header__newOne">
-                            <Link to={"/clothes"} onClick={() => changeLocation("/clothes")} className="header__newButtonLink">ОДЯГ</Link>
-                            <Link to={"/shose"} onClick={() => changeLocation("/shose")} className="header__newButtonLink">ВЗУТТЯ</Link>
-                            <Link to={"/accessories"} onClick={() => changeLocation("/accessories")} className="header__newButtonLink">АКСЕСУАРИ</Link>
-                            <Link to={"/brands"} onClick={() => changeLocation("/brands")} className="header__newButtonLink">БРЕНДИ</Link>
+                            <Link to={"/clothes"} onClick={() => changeLocation("/clothes")} className="header__newButtonLink">КНИГИ</Link>
+                            <Link to={"/shose"} onClick={() => changeLocation("/shose")} className="header__newButtonLink">ЖУРНАЛИ</Link>
+                            <Link to={"/brands"} onClick={() => changeLocation("/brands")} className="header__newButtonLink">ПИСЬМЕННИКИ</Link>
                             <Link to={"/sale"} onClick={() => changeLocation("/sale")} className="header__newButtonLink">SALE</Link>
                         </div>
                     </div>

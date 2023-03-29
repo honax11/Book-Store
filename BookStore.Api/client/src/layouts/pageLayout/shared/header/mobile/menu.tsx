@@ -32,10 +32,9 @@ export const Menu = (props: Props) => {
     return (
         <div className="sidebar-menu" hidden={modalIsOpen}>
             <div className="container">
-                <MainButtons closeModal={(e) => closeModal(false)} key={ProductType.Clothes} categories={categories} name='ОДЯГ' type={ProductType.Clothes}></MainButtons>
-                <MainButtons closeModal={(e) => closeModal(false)} key={ProductType.Shose} categories={categories} name='ВЗУТТЯ' type={ProductType.Shose}></MainButtons>
-                <MainButtons closeModal={(e) => closeModal(false)} key={ProductType.Accessories} categories={categories} name='АКСЕСУАРИ' type={ProductType.Accessories}></MainButtons>
-                <a href='/brands' onClick={(e) => onMove("/brands", "Brands")} className="sidebar-menu__pb"><div className="sidebar-menu__micro-buttons">БРЕНДИ</div></a>
+                <MainButtons closeModal={(e) => closeModal(false)} key={ProductType.Clothes} categories={categories} name='КНИГИ' type={ProductType.Clothes}></MainButtons>
+                <MainButtons closeModal={(e) => closeModal(false)} key={ProductType.Shose} categories={categories} name='ЖУРНАЛИ' type={ProductType.Shose}></MainButtons>
+                <a href='/brands' onClick={(e) => onMove("/brands", "Brands")} className="sidebar-menu__pb"><div className="sidebar-menu__micro-buttons">ПИСЬМЕННИКИ</div></a>
                 <a href='/sale' onClick={(e) => onMove("/sale", "SALE")} className="sidebar-menu__pb"><div className="sidebar-menu__micro-buttons">SALE</div></a>
                 <a href='/magazine' onClick={(e) => onMove("/magazine", "Blog")} className="sidebar-menu__pb"><div className="sidebar-menu__micro-buttons">БЛОГ</div></a>
                 <a href='/about-us' onClick={(e) => onMove("/about-us", "About Us")} className="sidebar-menu__pb"><div className="sidebar-menu__micro-buttons">ПРО НАС</div></a>

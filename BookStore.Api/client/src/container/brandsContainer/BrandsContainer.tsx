@@ -58,7 +58,7 @@ const BrandsContainer = () => {
             </Helmet>
             <div className="brands">
                 <div className="container">
-                    <h1 className="clothes__title">Список українських брендів</h1>
+                    <h1 className="clothes__title">Список українських письменників</h1>
                     <div className="brands__header">
                         {brands.map(item => (
                             <p key={item.letter} onClick={() => setLetterActive(item.letter)} className={`brands__letterIsActiv ${selectedLetters.includes(item.letter) ? "brands__letterActiv" : " "}`}>{item.letter}</p>

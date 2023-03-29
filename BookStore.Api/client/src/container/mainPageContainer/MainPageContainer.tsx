@@ -8,7 +8,7 @@ import { WebCarousel } from "./WebCarousel";
 import { NewProductsComponent } from "./NewProductsComponent";
 import { Magazine } from "shared/models/magazine/Magazine";
 import { BlogCommponent } from "./BlogCommponent";
-import mainBanner from '../../assets/icons/mainBanner.webp';
+import mainBanner from '../../assets/icons/stock-photo-many-sorted-old-books-are.jpg';
 import { GetAllBannerView } from "shared/models/banner/GetAllBannerView";
 import { GetNewProductsView } from "shared/models/banner/GetNewProductsView";
 import { GetPrevInfoView } from "shared/models/banner/GetPrevInfoView";
