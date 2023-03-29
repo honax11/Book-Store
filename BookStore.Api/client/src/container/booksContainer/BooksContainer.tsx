@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductList } from "shared/components/product-list/ProductList";
-import "./clothesContainer.scss";
+import "./booksContainer.scss";
 import { ThreeDots } from "react-loader-spinner";
 import { ProductColor } from "shared/models/clothes/ProductColor";
 import { ProductFilters } from "shared/models/clothes/ProductFilters";
@@ -22,7 +22,7 @@ interface Props {
     pageTitle: string;
     pageDescription: string;
 }
-const ClothesContainer = ({ pageType, pageTitle, pageDescription }: Props) => {
+const BooksContainer = ({ pageType, pageTitle, pageDescription }: Props) => {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<Category[]>([]);
     const [selectedSize, setSelectedSize] = useState<Size[]>([]);
@@ -336,4 +336,4 @@ const ClothesContainer = ({ pageType, pageTitle, pageDescription }: Props) => {
     )
 };
 
-export default ClothesContainer;
+export default BooksContainer;

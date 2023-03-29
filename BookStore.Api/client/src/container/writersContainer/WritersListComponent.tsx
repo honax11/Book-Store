@@ -7,7 +7,7 @@ export interface Props {
     selectedLetters: string[];
 }
 
-export const BrandsListComponent = (props: Props) => {
+export const WritersListComponent = (props: Props) => {
     const { brands, selectedLetters } = props;
 
     const [imageWidth, setImageWidth] = useState(0);

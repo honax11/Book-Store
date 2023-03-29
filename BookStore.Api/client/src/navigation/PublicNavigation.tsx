@@ -39,11 +39,11 @@ import { ProductType } from "shared/models/category/ProductType";
 import { ACCESSORIS_DESC, CLOTHES_DESC, SALE_DESC, SHOSE_DESC } from "shared/modules/ceo/CEODesctiptionConst";
 import { ACCESSORIS_TITLE, CLOTHES_TITLE, SALE_TITLE, SHOSE_TITLE } from "shared/modules/ceo/CEOTitleConst";
 
-const BrandsContainer = lazy(() => import('../container/brandsContainer/BrandsContainer'));
+const BrandsContainer = lazy(() => import('../container/writersContainer/WritersContainer'));
 const CheckOutContainer = lazy(() => import('../container/checkOutContainer/CheckOutContainer'));
 const MagazineContainer = lazy(() => import('../container/magazineContainer/MagazineContainer'));
 const ArticleContainer = lazy(() => import('../container/articleContainer/ArticleContainer'));
-const ClothesContainer = lazy(() => import('../container/clothesContainer/ClothesContainer'));
+const ClothesContainer = lazy(() => import('../container/booksContainer/BooksContainer'));
 const BrandContainer = lazy(() => import('../container/brandContainer/BrandContainer'));
 
 const SuccessfulPaymentContainer = lazy(() => import('../container/successfulPaymentContainer/SuccessfulPaymentContainer'));

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "./brandsContainer.scss";
+import "./writersContainer.scss";
 import { GetAllBrandsView } from "shared/models/brands/GetAllBrandsView";
 import { GetAllBrandsViewItem } from "shared/models/brands/GetAllBrandsViewItem";
 import { Helmet } from "react-helmet-async";
 import { getAllBrandsClick } from "shared/services/customer-services/click/click-service";
 import { get } from "shared/services/HTTPUserService";
-import { BrandsListComponent } from "./BrandsListComponent";
+import { WritersListComponent } from "./WritersListComponent";
 
-const BrandsContainer = () => {
+const WritersContainer = () => {
     const [brands, setBrands] = useState<GetAllBrandsViewItem[]>([]);
     const [selectedLetters, setSelectedLetters] = useState<string[]>([]);
     const [title, setTitle] = useState<string>("");
@@ -65,14 +65,14 @@ const BrandsContainer = () => {
                         ))}
                     </div>
                     <div className="brands__media">
-                        <BrandsListComponent
+                        <WritersListComponent
                             brands={brands}
                             selectedLetters={selectedLetters}
-                        ></BrandsListComponent>
+                        ></WritersListComponent>
                     </div>
                 </div>
             </div>
         </>
     )
 }
-export default BrandsContainer;
+export default WritersContainer;
