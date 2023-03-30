@@ -1,10 +1,11 @@
 using BookStore.DataAccess.Data;
+using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DataAccess.Repositoris
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
         protected DataContext _context;
         protected DbSet<TEntity> _dbSet;

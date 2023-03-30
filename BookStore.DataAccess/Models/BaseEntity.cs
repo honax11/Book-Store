@@ -1,6 +1,6 @@
 namespace BookStore.DataAccess.Models
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public string Id { get; set; }
         public DateTime CreationDate {get; set;}

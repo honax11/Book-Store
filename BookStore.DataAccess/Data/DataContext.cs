@@ -5,9 +5,9 @@ namespace BookStore.DataAccess.Data
 {
     public class DataContext: DbContext 
     { 
-        public DbSet<Ganre> Genre {get;set;}
-        public DbSet<Author> Author {get;set;}
-        public DbSet<Product> Book {get;set;}
+        public DbSet<Ganre> Genres {get;set;}
+        public DbSet<Author> Authors {get;set;}
+        public DbSet<Product> Books {get;set;}
         public DbSet<Order> Orders {get; set; }
         public DbSet<Users> Users { get; set; }
         

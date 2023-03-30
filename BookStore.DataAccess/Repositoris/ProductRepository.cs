@@ -4,11 +4,12 @@ using BookStore.DataAccess.Repositoris.Interfaces;
 
 namespace BookStore.DataAccess.Repositoris
 {
-    public class BookRepository: GenericRepository<Product>, IBookRepository
+    public class ProductRepository: GenericRepository<Product>, IProductRepository
     {
-        public BookRepository(DataContext contex): base (contex)
+         public ProductRepository(DataContext contex): base (contex)
         {
 
         }
+        
     }
 }
