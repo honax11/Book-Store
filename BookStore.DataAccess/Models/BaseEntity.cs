@@ -1,8 +1,10 @@
 namespace BookStore.DataAccess.Models
 {
-    public class BaseEntety
+    public class BaseEntity
     {
         public string Id { get; set; }
-        public string Name {get; set;}
+        public DateTime CreationDate {get; set;}
+        public bool IsActive {get; set;}
+        public bool  IsDeleted  {get; set;}
     }
 }
