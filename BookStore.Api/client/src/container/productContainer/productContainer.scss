@@ -1,0 +1,245 @@
+.product {
+
+  &__description {
+    font-size: 16px;
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+    text-align: justify;
+    font-family: Montserrat;
+  }
+
+  &__buttonBack {
+    padding-left: 5px;
+    zoom: 2;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0;
+    border: none;
+    background: none;
+  }
+
+  &__buttonNext {
+    padding-right: 5px;
+    zoom: 2;
+    border: none;
+    background: none;
+    right: 0;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+  }
+
+  &__miniminimini {
+    overflow: auto;
+    display: flex;
+    padding-top: 24px;
+    grid-column-gap: 20px;
+  }
+
+  &__positionCarousel {
+    position: relative;
+    margin: auto;
+  }
+
+  &__imgCarousel {
+    cursor: zoom-in;
+    position: relative;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+    display: block;
+  }
+
+  &__microCarousel {
+    border: none;
+    display: grid;
+    height: 100%;
+  }
+
+  &__main {
+    display: flex;
+  }
+
+  &__left {
+    width: 50%;
+    max-width: 50%;
+    min-width: 50%;
+  }
+
+  &__right {
+    float: right;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  &__name {
+    font-family: "Manrope";
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  &__price {
+    font-family: "Manrope";
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  &__price-sale {
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  &__price-old {
+    text-decoration: line-through;
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 20px;
+    padding-right: 15px;
+  }
+
+  &__price-new {
+    font-family: "Manrope";
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+  }
+
+  &__sizes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px;
+    padding: 0;
+  }
+
+  &__size {
+    &--active {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      padding: 7px;
+      border: 2px solid black;
+      color: black;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    &--inactive {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      padding: 7px;
+      border: 2px solid gray;
+      color: grey;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      outline: none;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__btn {
+    margin-bottom: 24px;
+  }
+
+  &__color-grey {
+    font-size: 13px;
+    color: #141414;
+    margin-bottom: 8px;
+  }
+
+  &__font14 {
+    font-size: 14px;
+    margin-bottom: 4px;
+    text-align: justify;
+    font-family: Montserrat;
+  }
+
+  &__color-grey-table {
+    font-size: 13px;
+    margin-bottom: 7px;
+    color: #141414;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &__none {
+    display: flex;
+    text-decoration: none;
+  }
+
+  &__btn-btn {
+    width: 350px;
+    height: 40px;
+  }
+
+  &__greyLine {
+    padding-top: 24px;
+    display: column;
+    min-height: 45px;
+  }
+
+  &__padding {
+    padding: 0 12px;
+  }
+}
+
+.active-size-buttom {
+  background-color: rgb(139, 138, 138);
+}
+
+.size-color {
+  font-size: 15px;
+
+  :hover {
+    background-color: rgb(139, 138, 138);
+  }
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  font-size: 12px;
+  visibility: hidden;
+  width: 110px;
+  height: 20px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 50%;
+  margin-left: -30px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  margin-left: -40px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

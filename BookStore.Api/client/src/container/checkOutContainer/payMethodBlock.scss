@@ -1,0 +1,26 @@
+.payment-margin-bottom {
+    margin-bottom: 16px;
+}
+
+.payment-margin-top {
+    margin-top: 16px;
+}
+
+.payMethodBlock {
+    &__checkbox {
+        display: flex;
+
+        p {
+            padding-left: 12px;
+        }
+    }
+}
+
+.btn-dark-payment2 {
+    width: 95%;
+}
+
+.call-back {
+    margin-bottom: 0;
+    font-size: 12px;
+}

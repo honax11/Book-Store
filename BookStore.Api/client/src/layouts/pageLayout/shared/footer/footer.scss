@@ -1,0 +1,99 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/media";
+
+.footer {
+  margin: 0 auto;
+  max-width: 1200px;
+  background-color: $white;
+
+  &__color {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__padding {
+    padding-bottom: 5px;
+    padding-top: 2px;
+  }
+
+  &__position {
+    font-family: 'Montserrat';
+    color: $black;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: $black;
+      text-decoration: underline;
+    }
+  }
+
+  &__pb-3 {
+    padding-bottom: 16px;
+  }
+
+  &__divider {
+    background-color: rgb(235, 235, 235);
+    background-repeat: repeat-x;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__general {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 8px;
+  }
+
+  &__first {
+    padding-top: 15px;
+  }
+
+  &__logo {
+    height: 130px;
+    padding-left: 10px;
+  }
+
+  &__two {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    text-align: center;
+  }
+
+  &__tree {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    text-align: right;
+    padding-right: 10px;
+  }
+
+  &__contact {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
+
+.social-icons {
+  padding-top: 25px;
+  display: flex;
+  justify-content: right;
+  gap: 25px;
+  zoom: 120%;
+}
+
+.social-icon-color {
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+    color: black;
+  }
+}

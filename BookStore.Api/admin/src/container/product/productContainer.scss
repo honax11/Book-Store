@@ -1,0 +1,244 @@
+.carousel__dotNew {
+  justify-content: center;
+  .carousel__dot {
+    background-color: gray;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 50%;
+    border: none;
+
+    &--selected {
+      background-color: black;
+    }
+  }
+}
+
+.product {
+
+  &__buttonBack {
+    padding-left: 5px;
+    zoom: 2;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0;
+    border: none;
+    background: none;
+  }
+
+  &__buttonNext {
+    padding-right: 5px;
+    zoom: 2;
+    border: none;
+    background: none;
+    right: 0;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+  }
+
+  &__miniminimini {
+    overflow: auto;
+    display: flex;
+    padding-top: 24px;
+    grid-column-gap: 20px;
+  }
+
+  &__positionCarousel {
+    position: relative;
+    margin: auto;
+  }
+
+  &__imgCarousel {
+    cursor: zoom-in;
+    position: relative;
+    overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+    display: block;
+  }
+
+  &__microCarousel {
+    border: none;
+    display: grid;
+    width: 100px;
+  }
+
+  &__main {
+    display: flex;
+  }
+
+  &__left {
+    width: 50%;
+    max-width: 50%;
+    min-width: 50%;
+  }
+
+  &__click-clack {
+    border: none;
+    background-color: rgb(255, 255, 255);
+  }
+
+  &__right {
+    float: right;
+    padding-left: 12px;
+  }
+
+  &__brand {
+    color: black;
+    text-decoration: none;
+    font-family: "Manrope";
+    font-size: 18px;
+    margin-bottom: 0;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__name {
+    font-family: "Manrope";
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  &__price {
+    font-family: "Manrope";
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  &__price-sale {
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  &__price-old {
+    text-decoration: line-through;
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 20px;
+    padding-right: 15px;
+  }
+
+  &__price-new {
+    font-family: "Manrope";
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+  }
+
+  &__sizes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px;
+    padding: 0;
+  }
+
+  &__size {
+    &--active {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      padding: 6px;
+      border: 3px solid black;
+      color: black;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    &--inactive {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      padding: 6px;
+      border: 3px solid gray;
+      color: grey;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    &--color {
+      :hover {
+        background-color: rgb(139, 138, 138);
+      }
+    }
+  }
+
+  &__btn {
+    margin-bottom: 24px;
+  }
+
+  &__color-grey {
+    padding-right: 2px;
+    font-size: 12px;
+    color: grey;
+  }
+
+  &__font14 {
+    font-size: 14px;
+  }
+
+  &__color-grey-table {
+    font-size: 14px;
+    margin-bottom: 24px;
+    color: grey;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &__color-black {
+    padding-left: 5px;
+    color: black;
+  }
+
+  &__none {
+    display: flex;
+    text-decoration: none;
+  }
+
+  &__btn-btn {
+    width: 350px;
+    height: 40px;
+  }
+
+  &__greyLine {
+    padding-top: 24px;
+    display: flex;
+    min-height: 45px;
+  }
+
+  &__padding{
+    padding: 0 12px;
+  }
+}
+
+.active-size-buttom {
+  background-color: rgb(139, 138, 138);
+}
+
+.main {
+  width: 100%;
+
+  &__logo {
+    width: 100%;
+  }
+}
+
+
+.size-color {
+  font-size: 15px;
+
+  :hover {
+    background-color: rgb(139, 138, 138);
+  }
+}

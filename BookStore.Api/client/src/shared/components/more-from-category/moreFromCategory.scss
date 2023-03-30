@@ -1,0 +1,55 @@
+.previu {
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    border: none;
+
+    &::-webkit-scrollbar {
+        height: 3px;
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: 5px 5px 5px -5px rgba(206, 206, 206, 0.2) inset;
+        background-color: #f9f9fd;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgb(150, 150, 150), rgb(150, 150, 150));
+    }
+
+    &__item {
+        cursor: pointer;
+        margin-top: 24px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+    &__img {
+        width: 230px;
+    }
+
+    &__nameBrand {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            color: black;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+
+    .previu {
+        &__img {
+            width: 140px;
+        }
+
+        &__item {
+            margin-bottom: 12px;
+        }
+    }
+}

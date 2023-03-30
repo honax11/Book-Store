@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+@import "../../styles/media.scss";
+
+.publick {
+
+    b, li {
+        line-height: 1.5;
+    }
+
+    * {
+        font-family: "Manrope";
+    }
+
+    &__main-title {
+        padding-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+    p,
+    li,
+    b {
+        font-size: 15px;
+        text-align: justify;
+    }
+
+    ol {
+        padding: 0 10px;
+        list-style: none;
+        counter-reset: li;
+    }
+
+    li:before {
+        counter-increment: li;
+        content: counters(li, ".") ". ";
+        text-indent: 1.5rem; // если что скинуть вниз
+    }
+
+
+
+    h1 {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__list {
+        list-style: inside;
+    }
+
+    &__sub-list {
+        list-style: circle;
+    }
+
+    &__text {
+        padding: 0;
+        margin: 0;
+    }
+}
