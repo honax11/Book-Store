@@ -7,9 +7,8 @@ namespace BookStore.DataAccess.Data
     { 
         public DbSet<Ganre> Genre {get;set;}
         public DbSet<Author> Author {get;set;}
-        public DbSet<Book> Book {get;set;}
+        public DbSet<Product> Book {get;set;}
         public DbSet<Order> Orders {get; set; }
-        public DbSet<Magazine> Magazines {get; set; }
         public DbSet<Users> Users { get; set; }
         
 

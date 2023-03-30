@@ -10,7 +10,7 @@ namespace BookStore.DataAccess.Models
         public string PostIndex { get; set; }
         public string NumerPost { get; set; }
         public string GoodsOfBook { get; set; }
-        public List<Book> Book { get; set; }
+        public List<Product> Book { get; set; }
         public double TotalOrderPrice { get; set; }
         
     }
