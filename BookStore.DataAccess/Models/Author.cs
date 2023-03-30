@@ -4,7 +4,7 @@ namespace BookStore.DataAccess.Models
     {
       public string Name { get; set; }
        public Ganre Ganre {get; set;}
-       public Book Book {get; set;}
+       public Product Book {get; set;}
       //  public List<Genre> Ganres { get; set; }
          
     }
