@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.DataAccess.Models
 {
-    public class Book
+    public class Book: BaseEntity
     {
         public string Id {get; set;}
         public string Title {get; set;}
