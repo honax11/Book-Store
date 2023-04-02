@@ -1,10 +1,14 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Models.Enums;
 
-namespace BookStore.DataAccess.Models
+namespace BookStore.BusinessLogic.Views
 {
-    public class Product: BaseEntity
+    public class CreateProductView
     {
+        public string Id { get; set; }
+        public DateTime CreationDate {get; set;}
+        public bool IsActive {get; set;}
+        public bool  IsDeleted  {get; set;}
         public string Name {get; set;}
         public string Title {get; set;}
         public string TotalPages {get; set;}

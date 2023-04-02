@@ -1,13 +1,14 @@
+using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
 
 namespace BookStore.BusinessLogic.Services.Interfaces
 {
     public interface IProductService
     {
-        Task Create (Product product);
-        Task Delete (Product product);
+        Task Create (CreateProductView view);
+        Task Delete (CreateProductView view);
         Task <Product> FindId (string id);
-        Task Update (Product product);
+        Task Update (CreateProductView view);
         Task<IEnumerable<Product>> GetAll();
     }
 }

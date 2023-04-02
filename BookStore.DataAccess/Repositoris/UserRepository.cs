@@ -5,7 +5,7 @@ using BookStore.DataAccess.Repositoris.Interfaces;
 
 namespace BookStore.DataAccess.Repositoris
 {
-    public class UserRepository: GenericRepository<Users>, IUsersRepository
+    public class UserRepository: GenericRepository<User>, IUsersRepository
     {
         public UserRepository(DataContext context): base (context)
         {

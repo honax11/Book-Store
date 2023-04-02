@@ -1,8 +1,10 @@
+using BookStore.DataAccess.Models.Enums;
+
 namespace BookStore.DataAccess.Models
 {
-    public class Users: BaseEntity
+    public class User: BaseEntity
     {
-        public string User { get; set; }
+        public UserType UserType { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
