@@ -23,15 +23,9 @@ namespace BookStore.BusinessLogic.Services
             }
 
             var product = new Product();
-            product.Author = view.Author;
             product.AuthorId =view.AuthorId;
-            product.CreationDate = view.CreationDate;
             product.Description = view.Description;
-            product.Ganre = view.Ganre;
             product.GanreId = view.GanreId;
-            product.Id = view.Id;
-            product.IsActive = view.IsActive;
-            product.IsDeleted = view.IsDeleted;
             product.Name = view.Name;
             product.Price = view.Price;
             product.SalePrice = view.SalePrice;
@@ -42,14 +36,22 @@ namespace BookStore.BusinessLogic.Services
           await _product.Create(product);
         }
 
-        public Task Delete(CreateProductView view)
+        public async Task Delete(string id)
         {
-            throw new NotImplementedException();
+            var product =  await _product.FindId(id);
+
+            if(product==null)
+            {
+                throw new Exception("Product not finde");
+            }
+            await _product.Delete(product);
+
+
         }
 
-        public Task<Product> FindId(string id)
+        public async Task<Product> FindId(string id)
         {
-            throw new NotImplementedException();
+            return await _product.FindId(id); 
         }
 
         public async Task<IEnumerable<Product>> GetAll()
@@ -57,7 +59,7 @@ namespace BookStore.BusinessLogic.Services
             return await _product.GetAll();
         }
 
-        public Task Update(CreateProductView view)
+        public Task Update()
         {
             throw new NotImplementedException();
         }

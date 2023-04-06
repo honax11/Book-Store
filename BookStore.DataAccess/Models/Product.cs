@@ -8,13 +8,15 @@ namespace BookStore.DataAccess.Models
         public string Name {get; set;}
         public string Title {get; set;}
         public string TotalPages {get; set;}
-        public string AuthorId { get; set; }
-        public Author Author {get; set;}
-        public string GanreId {get; set;}
-        public Ganre Ganre {get; set;}
+        [ForeignKey("Author")]
+        public string AuthorId { get; set; }   
+        public virtual Author Author {get; set;}
+        [ForeignKey("Ganre")]
+        public string GanreId {get; set;} 
+        public virtual Ganre Ganre {get; set;}
         public double Price {get; set;}
         public double SalePrice { get; set; }
-        public ProductType Type {get; set;}
+        public  ProductType Type {get; set;}
         public string Description { get; set; }
 
     }

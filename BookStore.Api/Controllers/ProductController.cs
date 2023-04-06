@@ -27,7 +27,12 @@ namespace Book_Store.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> GetAll()
         {
              return Ok (await _product.GetAll());
-            
+        }
+
+        [HttpGet]
+        public async Task <ActionResult<Product>> FindId (string id)
+        {
+            return Ok (await _product.FindId(id));
         }
 
 

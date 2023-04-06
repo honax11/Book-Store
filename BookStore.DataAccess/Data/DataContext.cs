@@ -15,9 +15,9 @@ namespace BookStore.DataAccess.Data
 
         public DataContext(DbContextOptions options): base (options)
         {
+            
 
         }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -25,6 +25,7 @@ namespace BookStore.DataAccess.Data
             {
                 options.UseSqlite();
             }
+
         }
     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,4 +40,5 @@ namespace BookStore.DataAccess.Data
 
         
     }
+    
 }
