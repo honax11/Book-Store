@@ -22,6 +22,7 @@ namespace BookStore.BusinessLogic.Services
             }
 
             var ganre = new Ganre();
+            ganre.Id = view.Id;
             ganre.Name = view.Name;
             ganre.GanreId = view.GanreId;
 
@@ -34,13 +35,13 @@ namespace BookStore.BusinessLogic.Services
         } 
         public async Task Delete(string id)
         {
-            var product =  await _ganre.FindId(id);
+            var detete =  await _ganre.FindId(id);
 
-            if(product==null)
+            if(detete==null)
             {
                 throw new Exception("Ganre not finde");
             }
-            await _ganre.Delete(product);
+            await _ganre.Delete(detete);
 
         }
 
@@ -49,9 +50,18 @@ namespace BookStore.BusinessLogic.Services
             return await _ganre.FindId(id); 
         }
 
-        public Task Update()
+        public async Task Update(UpdateGanreView view)
         {
-            throw new NotImplementedException();
+            var update = await _ganre.FindId(view.Id);
+
+            if(update == null)
+            {
+                throw new Exception ("Ganre not finde");
+            }
+            update.Name = view.Name;
+            update.GanreId = view.GanreId;
+
+            await _ganre.Update(update);
         }
     }
 }

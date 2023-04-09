@@ -37,10 +37,19 @@ namespace Book_Store.Controllers
             return Ok (await _ganre.FindId(id));
         }
 
-        [HttpGet]
-        public async Task Update ()
+        [HttpPut]
+        public async Task <IActionResult> Update (UpdateGanreView view)
         {
-            
+            await _ganre.Update(view);
+            return Ok();
+
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _ganre.Delete(id);
+            return Ok();
         }
 
         

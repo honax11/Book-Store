@@ -9,7 +9,7 @@ namespace BookStore.BusinessLogic.Services
         Task Create (CreateGanreView view);
         Task Delete (string id);
         Task <Ganre> FindId (string id);
-        Task Update ();
+        Task Update (UpdateGanreView view);
         Task<IEnumerable<Ganre>> GetAll();
     }
 }
