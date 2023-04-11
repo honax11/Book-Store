@@ -42,7 +42,7 @@ namespace BookStore.BusinessLogic.Services
 
             if (author == null)
             {
-                throw new Exception("Ganre not deleted");
+                throw new Exception("Author not found");
             }
             author.IsDeleted = true;
 
@@ -65,7 +65,7 @@ namespace BookStore.BusinessLogic.Services
 
             if(update == null)
             {
-                throw new Exception ("Genre not found");
+                throw new Exception ("Author not found");
             }
             update.FirstName = view.FirstName;
             update.SecondName = view.SecondName;
