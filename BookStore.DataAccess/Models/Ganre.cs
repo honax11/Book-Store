@@ -5,7 +5,7 @@ namespace BookStore.DataAccess.Models
     public class Ganre: BaseEntity
     {
         public string Name { get; set; }
-        public string GanreId {get; set;}
-        
+        public string Description {get; set;}
+
     }
 }

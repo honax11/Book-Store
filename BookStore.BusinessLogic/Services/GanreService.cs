@@ -1,4 +1,3 @@
-
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
@@ -24,7 +23,8 @@ namespace BookStore.BusinessLogic.Services
             var ganre = new Ganre();
             ganre.Id = view.Id;
             ganre.Name = view.Name;
-            ganre.GanreId = view.GanreId;
+            ganre.Description = view.Description;
+            ganre.IsActive = true;
 
           await _ganre.Create(ganre);
         }
@@ -35,13 +35,14 @@ namespace BookStore.BusinessLogic.Services
         } 
         public async Task Delete(string id)
         {
-            var detete =  await _ganre.FindId(id);
+            var ganre =  await _ganre.FindId(id);
 
-            if(detete==null)
+            if(ganre==null)
             {
-                throw new Exception("Ganre not finde");
+                throw new Exception("Ganre not found");
             }
-            await _ganre.Delete(detete);
+            ganre.IsDeleted = true;
+            await _ganre.Delete(ganre);
 
         }
 
@@ -56,10 +57,10 @@ namespace BookStore.BusinessLogic.Services
 
             if(update == null)
             {
-                throw new Exception ("Ganre not finde");
+                throw new Exception ("Genre not found");
             }
             update.Name = view.Name;
-            update.GanreId = view.GanreId;
+            update.Description = view.Description;
 
             await _ganre.Update(update);
         }

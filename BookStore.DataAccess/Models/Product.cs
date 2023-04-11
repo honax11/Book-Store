@@ -16,7 +16,7 @@ namespace BookStore.DataAccess.Models
         public virtual Ganre Ganre {get; set;}
         public double Price {get; set;}
         public double SalePrice { get; set; }
-        public  ProductType Type {get; set;}
+        public virtual ProductType Type {get; set;}
         public string Description { get; set; }
 
     }

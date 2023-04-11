@@ -18,6 +18,7 @@ export const OrderContainer = () => {
 
     useEffect(() => {
         getOrder();
+
     }, [])
 
     const getOrder = () => {
