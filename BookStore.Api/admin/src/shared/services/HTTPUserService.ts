@@ -6,7 +6,7 @@ import { getLocalAccessToken } from "./TokenService";
 const axios = require("axios").default;
 
 export const upload = async (url:string, file:any) => {
-    const token = getLocalAccessToken();
+    // const token = getLocalAccessToken();
 
     let formData = new FormData();
     formData.append("formFile", file.formFile.file);
@@ -18,13 +18,13 @@ export const upload = async (url:string, file:any) => {
     return await axios.post(process.env.REACT_APP_API_URL + url, formData, {
       headers: {
         "Content-Type": `multipart/form-data;`,
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
   };
 
   export const uploadBanner = async (url: string, file:any) => {
-    const token = getLocalAccessToken();
+    // const token = getLocalAccessToken();
 
     let formData = new FormData();
     formData.append("file", file.file);
@@ -32,12 +32,14 @@ export const upload = async (url:string, file:any) => {
     return await axios.post(process.env.REACT_APP_API_URL + url, formData, {
       headers: {
         "Content-Type": `multipart/form-data;`,
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
   };
 
   export const get = async (url: string) => {
+    debugger;
+    const S = process.env.REACT_APP_API_URL + url;
     const result = await fetch(process.env.REACT_APP_API_URL + url);
 
     if (!result.ok) {
@@ -48,12 +50,12 @@ export const upload = async (url:string, file:any) => {
   };
 
   export const deleteRequest = async (url: string) => {
-    const token = getLocalAccessToken();
+    // const token = getLocalAccessToken();
     await axios
       .delete(process.env.REACT_APP_API_URL + url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
       })
       .then(() => {
         showWarn("Item was deleted.");

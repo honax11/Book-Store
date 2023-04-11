@@ -39,7 +39,7 @@ export const UpdateArticlePopup = (props: Props) => {
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
-        post(`Magazine/Update`, magazine)
+        post(`Ganre/Update`, magazine)
             .then(() => {
                 refresh();
                 setName("");

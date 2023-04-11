@@ -1,7 +1,7 @@
 export const MAIN_URL = "/";
 export const URL = "/admin";
 export const SIZE_URL = "size";
-export const SIZE_CATEGORY = "category";
+export const SIZE_GENRE = "genre";
 export const DESIGNERS_URL = "designer";
 export const BANNER_URL = "banner";
 export const PRODUCTS_URL = "products";

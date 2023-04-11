@@ -12,7 +12,7 @@ import {
     ORDER_URL,
     PRODUCTS_URL,
     PRODUCT_URL,
-    SIZE_CATEGORY,
+    SIZE_GENRE,
     SIZE_URL,
     URL,
     CUSTOMERS_URL,
@@ -52,7 +52,7 @@ export const AppNavigation = () => (
         <Route path={URL} element={<Rout />}>
             [
             <Route index key={DASHBOARD_URL} element={<DashboardContainer />} />,
-            <Route path={SIZE_CATEGORY} key={SIZE_CATEGORY} element={<GenresContainer />} />,
+            <Route path={SIZE_GENRE} key={SIZE_GENRE} element={<GenresContainer />} />,
             <Route path={SIZE_URL} key={SIZE_URL} element={<SizesContainer />} />,
             <Route path={DESIGNERS_URL} key={DESIGNERS_URL} element={<DesignersContainer />} />,
             <Route path={PRODUCTS_URL} key={PRODUCTS_URL} element={<ProductsContainer />} />,

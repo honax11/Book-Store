@@ -72,7 +72,7 @@ export const SideBar = () => {
           </MenuItem>
           <MenuItem icon={<FaRegLaughWink />}>
             ЖАНР
-            <Link to="/admin/category" />
+            <Link to="/admin/genre" />
           </MenuItem>
           {/* <MenuItem icon={<FaHeart />}>
             Blog
