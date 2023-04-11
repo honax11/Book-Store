@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Category } from "shared/models/category/Category";
 import { get } from "shared/services/HTTPUserService";
-import { CategoryTable } from "../../shared/components/tables/CategoryTable";
+import { GenreTable } from "../../shared/components/tables/GenreTable";
+import { Genre } from "shared/models/genre/Genre";
 
 export const GenresContainer = () => {
-    const [categories, setCategories] = useState<Category[]>([]);
+    const [genre, setGenre] = useState<Genre[]>([]);
 
-    const getAllCategories = () => {
-        get(`Category/GetAll`)
+    const getAllGanre = () => {
+        get(`Ganre/GetAll`)
             .then((response) => {
-                setCategories(response);
+                debugger;
+                setGenre(response);
             });
     };
     useEffect(() => {
-        getAllCategories();
+        getAllGanre();
     }, []
     );
 
     return (
         <div>
-            <CategoryTable data={categories} refresh={() => getAllCategories()}></CategoryTable>
+            <GenreTable data={genre} refresh={() => getAllGanre()}></GenreTable>
         </div>
     )
 }

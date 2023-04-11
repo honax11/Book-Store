@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import './tablet.scss';
 import { Button } from 'react-bootstrap';
-import { CreateCategoryPopup } from '../popups/category/CreateCategoryPopup';
-import { UpdateCategoryPopup } from '../popups/category/UpdateCategoryPopup';
-import { Category } from 'shared/models/category/Category';
+import { CreateCategoryPopup } from '../popups/genre/CreateGenrePopup';
+import { UpdateGenrePopup } from '../popups/genre/UpdateGenrePopup';
 import { ConfirmationPopup } from 'shared/components/popups/confirmation-popup/ConfirmationPopup';
 import { deleteRequest } from 'shared/services/HTTPUserService';
 import { useSortBy, useTable } from 'react-table';
 import { useColumns } from 'shared/hook/useColumns';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
-import { CATEGORIES_TABLE_COLUMNS } from './columns/categoryColumns';
+import { Genre } from 'shared/models/genre/Genre';
+import { GENRE_TABLE_COLUMNS } from './columns/genreColumns';
 
 interface Props {
-  data: Category[];
+  data: Genre[];
   refresh: () => void;
 }
 
-export const CategoryTable = (props: Props) => {
+export const GenreTable = (props: Props) => {
   const { data, refresh } = props;
-  const columns = useColumns(CATEGORIES_TABLE_COLUMNS);
+  const columns = useColumns(GENRE_TABLE_COLUMNS);
   const table = useTable({ columns, data }, useSortBy);
 
   const {
@@ -32,26 +32,26 @@ export const CategoryTable = (props: Props) => {
   const [createModalIsOpen, setCreateModalIsOpen] = React.useState(false);
   const [updateModalIsOpen, setUpdateModalIsOpen] = React.useState(false);
   const [confirmation, setConfirmatin] = useState(false);
-  const [categoryToDelete, setCategoryToDelete] = useState<Category>();
+  const [genreToDelete, setGenreToDelete] = useState<Genre>();
 
-  const [category, setcategory] = useState<Category>();
+  const [genre, setGenre] = useState<Genre>();
 
   const openCreateModal = () => {
     setCreateModalIsOpen(true);
   }
 
-  const onUpdateCategory = (cat: Category) => {
-    setcategory(cat);
+  const onUpdateGenre = (cat: Genre) => {
+    setGenre(cat);
     setUpdateModalIsOpen(true);
   }
 
-  const onDeleteCategory = (data: Category) => {
-    setCategoryToDelete(data);
+  const onDeleteGenre = (data: Genre) => {
+    setGenreToDelete(data);
     setConfirmatin(true);
   }
 
-  const deleteCategory = (id: string) => {
-    deleteRequest(`Category/Delete?id=${id}`)
+  const deleteGenre = (id: string) => {
+    deleteRequest(`Ganre/Delete?id=${id}`)
       .then(() => {
         setConfirmatin(false);
         refresh();
@@ -61,8 +61,8 @@ export const CategoryTable = (props: Props) => {
   return (
     <div className="App">
       <div>
-        <h2 className="adminPageTitle">Categories</h2>
-        <Button className="btn btn-success" onClick={openCreateModal}>Create Category</Button>
+        <h2 className="adminPageTitle">Ganre</h2>
+        <Button className="btn btn-success" onClick={openCreateModal}>Create Ganre</Button>
       </div>
       <table {...getTableProps()}>
         <thead >
@@ -105,8 +105,8 @@ export const CategoryTable = (props: Props) => {
                     })
                   }
                   <td className="admin-panel-order-table">
-                    <Button className="btn btn-info btn-btnCategories" onClick={() => onUpdateCategory(row.original)}>Edit</Button>
-                    <Button className="btn btn-danger btn-btnCategories" onClick={() => onDeleteCategory(row.original)}>Delete</Button>
+                    <Button className="btn btn-info btn-btnCategories" onClick={() => onUpdateGenre(row.original)}>Edit</Button>
+                    <Button className="btn btn-danger btn-btnCategories" onClick={() => onDeleteGenre(row.original)}>Delete</Button>
                   </td>
                 </tr>
               );
@@ -116,8 +116,8 @@ export const CategoryTable = (props: Props) => {
       </table>
 
       <CreateCategoryPopup modalIsOpen={createModalIsOpen} closeModal={() => setCreateModalIsOpen(false)} refresh={refresh} />
-      {category && <UpdateCategoryPopup modalIsOpen={updateModalIsOpen} closeModal={() => setUpdateModalIsOpen(false)} refresh={refresh} category={category} setCategory={setcategory} />}
-      {categoryToDelete && <ConfirmationPopup onDelete={() => deleteCategory(categoryToDelete.id)} closeModal={() => setConfirmatin(false)} modalIsOpen={confirmation} product={categoryToDelete.name} ></ConfirmationPopup>}
+      {genre && <UpdateGenrePopup modalIsOpen={updateModalIsOpen} closeModal={() => setUpdateModalIsOpen(false)} refresh={refresh} genre={genre} setGenre={setGenre} />}
+      {genreToDelete && <ConfirmationPopup onDelete={() => deleteGenre(genreToDelete.id)} closeModal={() => setConfirmatin(false)} modalIsOpen={confirmation} product={genreToDelete.name} ></ConfirmationPopup>}
     </div>
   );
 }
