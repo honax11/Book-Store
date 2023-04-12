@@ -1,4 +1,4 @@
 export interface GenreToCreate {
     name: string,
-    ganreId: string
+    description: string
 }

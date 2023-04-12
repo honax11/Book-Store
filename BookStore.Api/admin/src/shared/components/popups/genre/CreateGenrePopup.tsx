@@ -13,22 +13,22 @@ export const CreateCategoryPopup = (props: Props) => {
     const { modalIsOpen, closeModal, refresh } = props;
 
     const [name, setName] = React.useState('');
-    const [ganreId, setGanreId] = React.useState('');
+    const [description, setDescription] = React.useState('');
 
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
         let genreToCreate: GenreToCreate = {
             name: name,
-            ganreId: ganreId,
+            description: description,
         }
 
         post(`Ganre/Create`, genreToCreate)
             .then(() => {
                 refresh();
                 setName("");
-                setGanreId("");
-            });
+                setDescription("");
+            }); 
         closeModal();
     }
 
@@ -53,13 +53,13 @@ export const CreateCategoryPopup = (props: Props) => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>ganreId</Form.Label>
+                            <Form.Label>Description</Form.Label>
                             <Form.Control
-                                type="ganreId"
-                                placeholder="ganreId"
+                                type="Description"
+                                placeholder="Description"
                                 autoFocus
-                                value={ganreId}
-                                onChange={(e) => setGanreId(e.target.value)}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                         </Form.Group>
 
