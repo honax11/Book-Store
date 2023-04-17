@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { Genre } from 'shared/models/genre/Genre';
-import { post } from 'shared/services/Service';
+import { post, put } from 'shared/services/Service';
 
 interface Props {
     genre: Genre;
@@ -14,7 +14,6 @@ interface Props {
 export const UpdateGenrePopup = (props: Props) => {
     const { genre, modalIsOpen, setGenre, closeModal, refresh } = props;
 
-
     const setName = (name: string) => {
         setGenre({ ...genre, name });
     }
@@ -22,7 +21,7 @@ export const UpdateGenrePopup = (props: Props) => {
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
-        post(`Ganre/Update`, genre)
+        put(`Ganre/Update`, genre)
             .then(() => {
                 refresh();
                 setName("");
