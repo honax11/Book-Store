@@ -8,10 +8,12 @@ namespace BookStore.BusinessLogic.Services
     public class AuthorService : IAuthorService
     {
         public readonly IAuthorRepository _authorRepository;
+        public readonly IGanreRepository _ganreRepository;
 
-        public AuthorService(IAuthorRepository authorRepository)
+        public AuthorService(IAuthorRepository authorRepository, IGanreRepository ganreRepository)
         {
             _authorRepository = authorRepository;
+            _ganreRepository = ganreRepository;
         }
 
         public async Task Create(CreateAuthorView view)
@@ -21,16 +23,14 @@ namespace BookStore.BusinessLogic.Services
                 throw new Exception("Author is not create");
             }
             var author = new Author();
-            author.Id = view.Id;
             author.FirstName = view.FirstName;
             author.SecondName = view.SecondName;
             author.BirthDay = view.BirthDay;
             author.DayOfDeath = view.DayOfDeath;
-            author.Ganres = view.Ganres;
-            author.GanreId = view.GanreId;
-            author.DescriptionOfGenre = view.DescriptionOfGenre;
             author.Products = view.Products;
             author.IsActive = true;
+
+            var ganres = await _ganreRepository.FindId(author.Id); 
 
             await _authorRepository.Create(author);
 
@@ -46,7 +46,7 @@ namespace BookStore.BusinessLogic.Services
             }
             author.IsDeleted = true;
 
-            await _authorRepository.Delete(author);
+            await _authorRepository.Update(author);
         }
 
         public async Task<Author> FindId(string id)
@@ -71,6 +71,7 @@ namespace BookStore.BusinessLogic.Services
             update.SecondName = view.SecondName;
             update.BirthDay = view.BirthDay;
             update.DayOfDeath = view.DayOfDeath;
+            update.IsActive = view.IsActive;
             
             
 

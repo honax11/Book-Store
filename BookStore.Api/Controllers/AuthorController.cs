@@ -36,9 +36,9 @@ namespace Book_Store.Controllers
         }
 
         [HttpPut]
-        public async Task <IActionResult> Update (UpdateGanreView view)
+        public async Task <IActionResult> Update (UpdateAuthorView view)
         {
-            //await _authorService.Update(view);
+            await _authorService.Update(view);
             return Ok();
 
         }
