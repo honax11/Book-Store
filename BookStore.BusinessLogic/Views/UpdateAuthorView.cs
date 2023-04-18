@@ -10,8 +10,8 @@ namespace BookStore.BusinessLogic.Views
         public DateTime BirthDay { get; set; }
         public DateTime? DayOfDeath { get; set; }
         public string GanreId { get; set; }
-        public List<Ganre> Ganres {get; set;}
+        public List<string> Ganres {get; set;}
         public List<Product> Products {get; set;}
-        public string DescriptionOfGenre {get; set;}
+        public bool IsActive {get; set;}
     }
 }

@@ -21,7 +21,6 @@ namespace BookStore.BusinessLogic.Services
             }
 
             var ganre = new Ganre();
-            ganre.Id = view.Id;
             ganre.Name = view.Name;
             ganre.Description = view.Description;
             ganre.IsActive = true;
@@ -42,7 +41,7 @@ namespace BookStore.BusinessLogic.Services
                 throw new Exception("Ganre not found");
             }
             ganre.IsDeleted = true;
-            await _ganre.Delete(ganre);
+            await _ganre.Update(ganre);
 
         }
 
@@ -61,6 +60,7 @@ namespace BookStore.BusinessLogic.Services
             }
             update.Name = view.Name;
             update.Description = view.Description;
+            update.IsActive = view.IsActive;
 
             await _ganre.Update(update);
         }
