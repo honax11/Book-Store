@@ -1,43 +1,37 @@
 import React from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { Designer } from 'shared/models/designer/Designer';
+import { UpdateAuthorView } from 'shared/models/author/UpdateAuthorView';
 import { post } from 'shared/services/Service';
 
 interface Props {
-    designer: Designer;
+    author: UpdateAuthorView;
     modalIsOpen: boolean;
-    setDesigner: (designer: Designer) => void;
+    setAuthor: (author: UpdateAuthorView) => void;
     closeModal: () => void;
     refresh: () => void;
 }
 
 export const UpdateDesignerPopup = (props: Props) => {
-    const { designer, modalIsOpen, setDesigner, closeModal, refresh } = props;
+    const { author, modalIsOpen, setAuthor, closeModal, refresh } = props;
 
-    const setFirstName = (firstName: string) => {
-        setDesigner({ ...designer, firstName });
+    const setId = (id: string) => {
+        setAuthor({ ...author, id });
     }
-    const setLastName = (lastName: string) => {
-        setDesigner({ ...designer, lastName });
-    }
-    const setUrl = (url: string) => {
-        setDesigner({ ...designer, url });
+    const setName = (name: string) => {
+        setAuthor({ ...author, name });
     }
     const setDescription = (description: string) => {
-        setDesigner({ ...designer, description });
-    }
-    const setImageAlt = (imageAlt: string) => {
-        setDesigner({ ...designer, imageAlt });
+        setAuthor({ ...author, description });
     }
 
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
-        post(`Designer/Update`, designer)
+        post(`Author/Update`, author)
             .then(() => {
                 refresh();
-                setFirstName("");
-                setLastName("");
+                setId("");
+                setName("");
                 setDescription("");
             });
         closeModal();
@@ -51,44 +45,24 @@ export const UpdateDesignerPopup = (props: Props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                            <Form.Label>ID</Form.Label>
+                            <Form.Control
+                                type="ID"
+                                placeholder="ID"
+                                autoFocus
+                                value={author.id}
+                                onChange={(e) => setId(e.target.value)}
+                            />
+                        </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>First Name</Form.Label>
+                            <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type="firstName"
                                 placeholder="First Name"
                                 autoFocus
-                                value={designer.firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control
-                                type="lastName"
-                                placeholder="First Name"
-                                autoFocus
-                                value={designer.lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Url</Form.Label>
-                            <Form.Control
-                                type="DesUrl"
-                                placeholder="Designer Url"
-                                autoFocus
-                                value={designer.url}
-                                onChange={(e) => setUrl(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Image Alt</Form.Label>
-                            <Form.Control
-                                type="string"
-                                placeholder="Image Alt"
-                                autoFocus
-                                value={designer.imageAlt}
-                                onChange={(e) => setImageAlt(e.target.value)}
+                                value={author.name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -98,7 +72,7 @@ export const UpdateDesignerPopup = (props: Props) => {
                                 rows={5}
                                 placeholder="Description"
                                 autoFocus
-                                value={designer.description}
+                                value={author.description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                         </Form.Group>

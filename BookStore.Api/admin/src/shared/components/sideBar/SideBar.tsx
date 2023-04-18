@@ -80,7 +80,7 @@ export const SideBar = () => {
           </MenuItem> */}
           <MenuItem icon={<SiHandshake />}>
             ПИСЬМЕННИК
-            <Link to="/admin/designer" />
+            <Link to="/admin/author" />
           </MenuItem>
           <MenuItem icon={<MdProductionQuantityLimits />}>
             Orders

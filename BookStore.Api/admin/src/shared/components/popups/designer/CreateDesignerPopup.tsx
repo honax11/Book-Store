@@ -1,49 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { DesignerToCreate } from 'shared/models/popups/designer/DesignerToCreate';
+import DatePicker from "react-datepicker";
+import Multiselect from 'multiselect-react-dropdown';
+import { CreateAuthorView } from 'shared/models/author/CreateAuthorView';
+import { Genre } from 'shared/models/genre/Genre';
 import { post } from 'shared/services/Service';
 
 interface Props {
     modalIsOpen: boolean;
     closeModal: () => void;
     refresh: () => void;
+    ganresAll: Genre[];
 }
 
 export const CreateDesignerPopup = (props: Props) => {
-    const { modalIsOpen, closeModal, refresh } = props;
+
+    const { modalIsOpen, closeModal, refresh, ganresAll } = props;
 
     const [firstName, setFirstName] = React.useState('');
-    const [lastName, setLastName] = React.useState('');
-    const [description, setDescription] = React.useState('');
-    const [url, setUrl] = React.useState('');
-    const [imageAlt, setImageAlt] = React.useState('');
+    const [secondName, setSecondName] = React.useState('');
+    const [birthDay, setBirthDay] = React.useState(new Date());
+    const [dayOfDeath, setDayOfDeath] = React.useState(new Date());
+    const [ganres, setGanres] = useState<string[]>([]);
 
     const onSubmitForm = (event: any) => {
+        debugger;
         event.preventDefault();
 
-        let designerToCreate: DesignerToCreate = {
+        let authorToCreate: CreateAuthorView = {
             firstName: firstName,
-            lastName: lastName,
-            description: description,
-            url: url,
-            imageAlt: imageAlt
+            secondName: secondName,
+            birthDay: birthDay,
+            dayOfDeath: dayOfDeath,
+            ganres: ganres
         }
 
-        post(`Designer/Create`, designerToCreate)
+        post(`Designer/Create`, authorToCreate)
             .then(() => {
                 refresh();
                 setFirstName('');
-                setLastName('');
-                setDescription('');
+                setSecondName('');
+                setBirthDay(birthDay);
+                setDayOfDeath(dayOfDeath);
             });
         closeModal();
+    }
+
+    const onSelectGenre = (selectedList: any, selectedItem: any) => {
+        let tempGenres = [ ...ganres ];
+        tempGenres.push(selectedItem.id);
+        setGanres(tempGenres);
+    }
+
+    const onRemoveGenre = (selectedList: any, removedItem: any) => {   
+        debugger;     
+        let tempGenres = [ ...ganres ];
+        tempGenres = ganres.filter(x => x != removedItem.id);
+        setGanres(tempGenres);
     }
 
     return (
         <>
             <Modal show={modalIsOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create Designer</Modal.Title>
+                    <Modal.Title>Create Author</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -58,45 +78,40 @@ export const CreateDesignerPopup = (props: Props) => {
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Last Name</Form.Label>
+                            <Form.Label>Second Name</Form.Label>
                             <Form.Control
-                                type="lastName"
-                                placeholder="First Name"
-                                autoFocus
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                type="secondName"
+                                placeholder="Second Name"
+                                value={secondName}
+                                onChange={(e) => setSecondName(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Url</Form.Label>
-                            <Form.Control
-                                type="DesUrl"
-                                placeholder="Designer Url"
-                                autoFocus
-                                value={url}
-                                onChange={(e) => setUrl(e.target.value)}
+                            <Form.Label>Birth Day</Form.Label>
+                            <DatePicker
+                                selected={birthDay}
+                                onChange={(birthDay: Date) => setBirthDay(birthDay)}
+                                className="form-control modal-number-input"
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Image Alt</Form.Label>
-                            <Form.Control
-                                type="string"
-                                placeholder="Image Alt"
-                                autoFocus
-                                value={imageAlt}
-                                onChange={(e) => setImageAlt(e.target.value)}
+                            <Form.Label>Day Of Death</Form.Label>
+                            <DatePicker
+                                selected={dayOfDeath}
+                                onChange={(dayOfDeath: Date) => setDayOfDeath(dayOfDeath)}
+                                className="form-control modal-number-input"
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                rows={3}
-                                placeholder="Description"
-                                autoFocus
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
+                            <Form.Label>Ganres</Form.Label>
+                            <Multiselect
+                                id='Ganres'
+                                options={ganresAll}
+                                onSelect={onSelectGenre}
+                                onRemove={onRemoveGenre}
+                                displayValue="name"
+                                placeholder="Ganres"
+                                emptyRecordMsg="Всі категорії вибрані" />
                         </Form.Group>
                     </Form>
                 </Modal.Body>

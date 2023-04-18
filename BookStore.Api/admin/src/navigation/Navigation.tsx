@@ -6,7 +6,7 @@ import {
     BANNER_URL,
     BLOG_URL,
     DASHBOARD_URL,
-    DESIGNERS_URL,
+    AUTHOR_URL,
     DESIGNER_URL,
     ORDERS_URL,
     ORDER_URL,
@@ -36,7 +36,7 @@ import { ArticleContainer } from "container/articles/ArticleContainer";
 import { OrderContainer } from "container/order/OrderContainer";
 import { OrdersContainer } from "container/orders/OrdersContainer";
 import { GenresContainer } from "container/category/GenresContainer";
-import { DesignersContainer } from "container/designers/DesignersContainer";
+import { AuthorsContainer } from "container/authors/AuthorsContainer";
 import { ProductsContainer } from "container/product/ProductsContainer";
 import { ProductContainer } from "container/product/ProductContainer";
 import { ArticlesContainer } from "container/articles/ArticlesContainer";
@@ -54,7 +54,7 @@ export const AppNavigation = () => (
             <Route index key={DASHBOARD_URL} element={<DashboardContainer />} />,
             <Route path={SIZE_GENRE} key={SIZE_GENRE} element={<GenresContainer />} />,
             <Route path={SIZE_URL} key={SIZE_URL} element={<SizesContainer />} />,
-            <Route path={DESIGNERS_URL} key={DESIGNERS_URL} element={<DesignersContainer />} />,
+            <Route path={AUTHOR_URL} key={AUTHOR_URL} element={<AuthorsContainer />} />,
             <Route path={PRODUCTS_URL} key={PRODUCTS_URL} element={<ProductsContainer />} />,
             <Route path={PRODUCT_URL} key={PRODUCT_URL} element={<ProductContainer />} />,
             <Route path={BANNER_URL} key={BANNER_URL} element={<BannerContainer />} />,

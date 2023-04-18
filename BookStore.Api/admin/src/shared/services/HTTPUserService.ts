@@ -38,8 +38,6 @@ export const upload = async (url:string, file:any) => {
   };
 
   export const get = async (url: string) => {
-    debugger;
-    const S = process.env.REACT_APP_API_URL + url;
     const result = await fetch(process.env.REACT_APP_API_URL + url);
 
     if (!result.ok) {
