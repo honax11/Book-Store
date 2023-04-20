@@ -1,18 +1,19 @@
 import { Column } from "react-table";
-import { Designer } from "shared/models/designer/Designer";
+import { Author } from "shared/models/author/Author";
 
 
-export const DESIGNERS_TABLE_COLUMNS: Column<Designer>[] = [
+export const AUTHORS_TABLE_COLUMNS: Column<Author>[] = [
     {
         Header: "Id",
         accessor: "id"
+
     },
     {
-        Header: "Firs Name",
+        Header: "First Name",
         accessor: "firstName"
     },
     {
         Header: "Last Name",
-        accessor: "lastName"
+        accessor: "secondName"
     }
 ]

@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './tablet.scss';
 import { Button } from 'react-bootstrap';
 import { CreateDesignerPopup } from '../popups/designer/CreateDesignerPopup';
 import { UpdateDesignerPopup } from '../popups/designer/UpdateDesignerPopup';
-import { Designer } from 'shared/models/designer/Designer';
 import { Link } from 'react-router-dom';
 import { ConfirmationPopup } from 'shared/components/popups/confirmation-popup/ConfirmationPopup';
-import { deleteRequest } from 'shared/services/HTTPUserService';
+import { deleteRequest, get } from 'shared/services/HTTPUserService';
 import { useColumns } from 'shared/hook/useColumns';
-import { DESIGNERS_TABLE_COLUMNS } from './columns/designersColumns';
 import { useSortBy, useTable } from 'react-table';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import { CreateAuthorView } from 'shared/models/author/CreateAuthorView';
+import { AUTHORS_TABLE_COLUMNS } from './columns/authorsColumns';
+import { UpdateAuthorView } from 'shared/models/author/UpdateAuthorView';
+import { Author } from 'shared/models/author/Author';
+import { Genre } from 'shared/models/genre/Genre';
 
 interface Props {
-  data: Designer[];
+  data: Author[];
   refresh: () => void;
 }
 
-export const DesignerTable = (props: Props) => {
+export const AuthorTable = (props: Props) => {
   const { data, refresh } = props;
 
-  const columns = useColumns(DESIGNERS_TABLE_COLUMNS);
+  const columns = useColumns(AUTHORS_TABLE_COLUMNS);
   const table = useTable({ columns, data }, useSortBy);
+
+  useEffect(() => {
+    getAllGenres()
+  }, [])
 
   const {
     getTableProps,
@@ -35,38 +42,49 @@ export const DesignerTable = (props: Props) => {
   const [updateModalIsOpen, setUpdateModalIsOpen] = React.useState(false);
 
   const [confirmation, setConfirmatin] = useState(false);
-  const [designerToDelete, setDesignerToDelete] = useState<Designer>();
 
-  const [designer, setDesigner] = useState<Designer>();
+  const [author, setAuthor] = useState<CreateAuthorView>();
+  const [authorToDelete, setAuthorToDelete] = useState<Author>();
+  const [authorToUpdate, setAuthorToUpdate] = useState<UpdateAuthorView>();
+
+  const [ganres, setGanres] = useState<Genre[]>([]);
+
 
   const openCreateModal = () => {
     setCreateModalIsOpen(true);
   }
 
-  const onDeleteDesigner = (product: Designer) => {
-    setDesignerToDelete(product);
+  const onDeleteAuthor = (author: Author) => {
+    setAuthorToDelete(author);
     setConfirmatin(true);
   }
 
   const deleteDesigner = (id: string) => {
-    deleteRequest(`Designer/Delete?id=${id}`)
+    deleteRequest(`Author/Delete?id=${id}`)
       .then(() => {
         setConfirmatin(false);
         refresh();
       });
   }
 
-  const onUpdateDesigner = (designer: Designer) => {
-    setDesigner(designer);
+  const onUpdateAuthor = (designer: Author) => {
+    setAuthor(author);
     setUpdateModalIsOpen(true);
   }
 
+  const getAllGenres = () => {
+    get(`Ganre/GetAll`)
+      .then((response) => {
+        setGanres(response);
+      });
+
+  }
 
   return (
     <div className="App">
       <div>
-        <h2 className="adminPageTitle">Designers</h2>
-        <Button className="btn btn-success" onClick={openCreateModal}>Create Designer</Button>
+        <h2 className="adminPageTitle">Author</h2>
+        <Button className="btn btn-success" onClick={openCreateModal}>Create Author</Button>
       </div>
       <table {...getTableProps()}>
         <thead >
@@ -109,9 +127,9 @@ export const DesignerTable = (props: Props) => {
                     })
                   }
                   <td className="admin-panel-order-table">
-                    <Link className="btn btn-info" to={`/admin/designer/${row.original.id}`}>Open</Link>
-                    <Button className="btn btn-warning" onClick={() => onUpdateDesigner(row.original)}>Edit</Button>
-                    <Button className="btn btn-danger" onClick={() => onDeleteDesigner(row.original)}>Delete</Button>
+                    <Link className="btn btn-info" to={`/admin/designer/${row.original}`}>Open</Link>
+                    <Button className="btn btn-warning" onClick={() => onUpdateAuthor(row.original)}>Edit</Button>
+                    <Button className="btn btn-danger" onClick={() => onDeleteAuthor(row.original)}>Delete</Button>
                   </td>
                 </tr>
               );
@@ -119,9 +137,9 @@ export const DesignerTable = (props: Props) => {
           }
         </tbody>
       </table>
-      <CreateDesignerPopup modalIsOpen={createModalIsOpen} closeModal={() => setCreateModalIsOpen(false)} refresh={refresh} />
-      {designer && <UpdateDesignerPopup modalIsOpen={updateModalIsOpen} closeModal={() => setUpdateModalIsOpen(false)} refresh={refresh} designer={designer} setDesigner={setDesigner} />}
-      {designerToDelete && <ConfirmationPopup onDelete={() => deleteDesigner(designerToDelete.id)} closeModal={() => setConfirmatin(false)} modalIsOpen={confirmation} product={designerToDelete.firstName + " " + designerToDelete.lastName} ></ConfirmationPopup>}
+      {ganres && <CreateDesignerPopup ganresAll={ganres} modalIsOpen={createModalIsOpen} closeModal={() => setCreateModalIsOpen(false)} refresh={refresh} />}
+      {authorToUpdate && <UpdateDesignerPopup modalIsOpen={updateModalIsOpen} closeModal={() => setUpdateModalIsOpen(false)} refresh={refresh} author={authorToUpdate} setAuthor={setAuthorToUpdate} />}
+      {authorToDelete && <ConfirmationPopup onDelete={() => deleteDesigner(authorToDelete.id)} closeModal={() => setConfirmatin(false)} modalIsOpen={confirmation} product={authorToDelete.firstName + " " + authorToDelete.secondName} ></ConfirmationPopup>}
     </div>
   );
 }

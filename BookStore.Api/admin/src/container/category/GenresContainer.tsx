@@ -9,7 +9,6 @@ export const GenresContainer = () => {
     const getAllGanre = () => {
         get(`Ganre/GetAll`)
             .then((response) => {
-                debugger;
                 setGenre(response);
             });
     };

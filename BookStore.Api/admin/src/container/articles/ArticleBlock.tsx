@@ -88,7 +88,6 @@ export const ArticleBlock = (props: Props) => {
     }
 
     const updatePicture = (event: any) => {
-        debugger;
         event.preventDefault();
         let pictureToUpdate: MagazinePictureToCreateView = {
             id: magazine?.magazinePictures.find(x => x.order == order - 1)?.id!,
