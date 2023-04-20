@@ -27,10 +27,11 @@ namespace BookStore.BusinessLogic.Services
             author.SecondName = view.SecondName;
             author.BirthDay = view.BirthDay;
             author.DayOfDeath = view.DayOfDeath;
-            author.Products = view.Products;
             author.IsActive = true;
 
-            var ganres = await _ganreRepository.FindId(author.Id); 
+            //var ganres = await _ganreRepository.FindId(author.Id); 
+
+            var ganresId = await _ganreRepository.ListGanreId(view.Ganres);
 
             await _authorRepository.Create(author);
 
