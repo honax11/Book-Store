@@ -31,7 +31,7 @@ namespace BookStore.BusinessLogic.Services
 
             //var ganres = await _ganreRepository.FindId(author.Id); 
 
-            var ganresId = await _ganreRepository.ListGanreId(view.Ganres);
+            var ganresId = await _ganreRepository.ListGanreId(author.ToString());
 
             await _authorRepository.Create(author);
 
