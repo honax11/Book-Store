@@ -22,16 +22,16 @@ namespace BookStore.BusinessLogic.Services
             {
                 throw new Exception("Author is not create");
             }
-            var author = new Author();
+            Author author = new Author();
             author.FirstName = view.FirstName;
             author.SecondName = view.SecondName;
             author.BirthDay = view.BirthDay;
             author.DayOfDeath = view.DayOfDeath;
             author.IsActive = true;
 
-            //var ganres = await _ganreRepository.FindId(author.Id); 
+            List<Ganre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
 
-            var ganresId = await _ganreRepository.ListGanreId(author.ToString());
+            author.Ganres = listGanre;
 
             await _authorRepository.Create(author);
 
@@ -74,6 +74,9 @@ namespace BookStore.BusinessLogic.Services
             update.DayOfDeath = view.DayOfDeath;
             update.IsActive = view.IsActive;
             
+            List<Ganre> ganres = await _ganreRepository.ListGanreId(view.Ganres);
+
+            update.Ganres = ganres;
             
 
             await _authorRepository.Update(update);

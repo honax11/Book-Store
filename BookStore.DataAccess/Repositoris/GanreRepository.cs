@@ -13,9 +13,9 @@ namespace BookStore.DataAccess.Repositoris
             
         }
 
-        public async Task <List<Ganre>> ListGanreId(string id)
+        public async Task <List<Ganre>> ListGanreId(List<string> ids)
         {
-            var listGanre = await _context.Genres.Where(g =>g.Id == id).ToListAsync();
+            var listGanre = await _context.Genres.Where(g => ids.Contains(g.Id)).ToListAsync();
             
             return listGanre;
         }
