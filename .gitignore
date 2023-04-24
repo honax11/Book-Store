@@ -455,3 +455,5 @@ $RECYCLE.BIN/
 
 *.sqlite
 *Book.sqlite
+*Book.sqlite-shm
+*Book.sqlite-wal

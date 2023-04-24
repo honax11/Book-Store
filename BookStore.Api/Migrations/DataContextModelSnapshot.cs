@@ -31,15 +31,7 @@ namespace BookStore.Migrations
                     b.Property<DateTime?>("DayOfDeath")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DescriptionOfGenre")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("GanreId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -242,7 +234,7 @@ namespace BookStore.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Models.Product", b =>
                 {
                     b.HasOne("BookStore.DataAccess.Models.Author", "Author")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -261,8 +253,6 @@ namespace BookStore.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Models.Author", b =>
                 {
                     b.Navigation("Ganres");
-
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

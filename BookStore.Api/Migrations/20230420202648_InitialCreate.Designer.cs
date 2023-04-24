@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230405182729_InitialCreate")]
+    [Migration("20230420202648_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,15 +34,7 @@ namespace BookStore.Migrations
                     b.Property<DateTime?>("DayOfDeath")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DescriptionOfGenre")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("GanreId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -72,7 +64,7 @@ namespace BookStore.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("GanreId")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -245,7 +237,7 @@ namespace BookStore.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Models.Product", b =>
                 {
                     b.HasOne("BookStore.DataAccess.Models.Author", "Author")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -264,8 +256,6 @@ namespace BookStore.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Models.Author", b =>
                 {
                     b.Navigation("Ganres");
-
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

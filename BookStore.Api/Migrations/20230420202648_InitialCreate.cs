@@ -20,8 +20,6 @@ namespace BookStore.Migrations
                     SecondName = table.Column<string>(type: "TEXT", nullable: false),
                     BirthDay = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DayOfDeath = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    GanreId = table.Column<string>(type: "TEXT", nullable: false),
-                    DescriptionOfGenre = table.Column<string>(type: "TEXT", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false)
@@ -77,7 +75,7 @@ namespace BookStore.Migrations
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    GanreId = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
                     AuthorId = table.Column<string>(type: "TEXT", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
