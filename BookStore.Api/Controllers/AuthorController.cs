@@ -1,3 +1,4 @@
+using BookStore.BusinessLogic.Services;
 using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
@@ -9,15 +10,19 @@ namespace Book_Store.Controllers
     [Route("api/[controller]/[action]")]
     public class AuthorController: ControllerBase
     {
-                private readonly IAuthorService _authorService;
+        private readonly IAuthorService _authorService;
+        private readonly IGanreService _ganreService;
+       
 
-        public AuthorController (IAuthorService authorService)
+        public AuthorController (IAuthorService authorService, IGanreService ganreService)
         {
             _authorService = authorService;
+            _ganreService = ganreService;
+            
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create (CreateAuthorView view)
+           public async Task<IActionResult> Create (CreateAuthorView view)
         {
             await _authorService.Create(view);
             return Ok();
@@ -25,15 +30,15 @@ namespace Book_Store.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAll()
-        {
+         {
              return Ok (await _authorService.GetAll());
-        }
+         }
 
         [HttpGet]
         public async Task <ActionResult<Author>> FindId (string id)
-        {
-            return Ok (await _authorService.FindId(id));
-        }
+            {
+                return Ok (await _authorService.FindId(id));
+            }
 
         [HttpPut]
         public async Task <IActionResult> Update (UpdateAuthorView view)

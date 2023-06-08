@@ -4,6 +4,6 @@ namespace BookStore.DataAccess.Repositoris.Interfaces
 {
     public interface IAuthorRepository: IGenericRepository<Author>
     {
-        
+        Task<List<Author>> ListGetAll();
     }
 }

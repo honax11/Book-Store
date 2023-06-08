@@ -59,9 +59,22 @@ namespace BookStore.BusinessLogic.Services
             return await _product.GetAll();
         }
 
-        public Task Update()
+        public async Task Update(UpdateProductView view)
         {
-            throw new NotImplementedException();
+            var update = await _product.FindId(view.Id);
+
+            if(update == null)
+            {
+                throw new Exception("Product is not found");
+            }
+
+            update.Name = view.Name;
+            update.Price = view.Prace;
+            update.SalePrice = view.SalePrice;
+            update.Title = view.Title;
+
+
+            await _product.Update(update);
         }
     }
 }

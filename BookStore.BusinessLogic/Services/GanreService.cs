@@ -7,10 +7,12 @@ namespace BookStore.BusinessLogic.Services
     public class GanreService: IGanreService
     {
         private readonly IGanreRepository _ganre;
+        private readonly IAuthorRepository _authorRepository;
 
-        public GanreService (IGanreRepository ganre)
+        public GanreService (IGanreRepository ganre, IAuthorRepository authorRepository)
         {
             _ganre = ganre;
+            _authorRepository = authorRepository;
         }
 
          public async Task Create(CreateGanreView view)
@@ -20,10 +22,11 @@ namespace BookStore.BusinessLogic.Services
                 throw new Exception ("Ganre not create");
             }
 
-            var ganre = new Ganre();
+            Ganre ganre = new Ganre();
             ganre.Name = view.Name;
             ganre.Description = view.Description;
             ganre.IsActive = true;
+
 
           await _ganre.Create(ganre);
         }

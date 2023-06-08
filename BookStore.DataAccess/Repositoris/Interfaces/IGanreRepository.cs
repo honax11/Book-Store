@@ -4,6 +4,7 @@ namespace BookStore.DataAccess.Repositoris.Interfaces
 {
     public interface IGanreRepository: IGenericRepository<Ganre>
     {
-        Task <List<Ganre>> ListGanreId(List<string> ids);
+        Task <List<Ganre>> ListGanreId (List<string> ids);
+       
     }
 }

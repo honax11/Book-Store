@@ -8,7 +8,7 @@ namespace BookStore.BusinessLogic.Services.Interfaces
         Task Create (CreateProductView view);
         Task Delete (string id);
         Task <Product> FindId (string id);
-        Task Update ();
-        Task<IEnumerable<Product>> GetAll();
+        Task <IEnumerable<Product>> GetAll();
+        Task Update(UpdateProductView view);
     }
 }

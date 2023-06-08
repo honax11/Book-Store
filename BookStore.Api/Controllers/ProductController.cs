@@ -33,6 +33,22 @@ namespace Book_Store.Controllers
         public async Task <ActionResult<Product>> FindId (string id)
         {
             return Ok (await _product.FindId(id));
-        }   
+        }
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateProductView view)
+        {
+             await _product.Update(view);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _product.Delete(id);
+            return Ok();
+
+        }
+
+        
     }
 }
