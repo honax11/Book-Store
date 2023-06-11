@@ -31,6 +31,10 @@ namespace BookStore.BusinessLogic.Services
 
             List<Ganre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
 
+            
+
+            
+
             await _authorRepository.Create(author);
 
         }
@@ -56,7 +60,7 @@ namespace BookStore.BusinessLogic.Services
         public async Task<IEnumerable<Author>> GetAll()
         {
             
-            return await _authorRepository.GetAll();
+            return await _authorRepository.ListGetAll();
         }
 
         public async Task Update(UpdateAuthorView view)

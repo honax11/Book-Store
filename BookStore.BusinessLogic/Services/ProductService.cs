@@ -44,6 +44,9 @@ namespace BookStore.BusinessLogic.Services
             {
                 throw new Exception("Product not finde");
             }
+
+            product.IsDeleted = true;
+
             await _product.Delete(product);
 
 

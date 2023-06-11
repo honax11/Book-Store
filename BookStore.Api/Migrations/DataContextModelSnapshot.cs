@@ -234,13 +234,13 @@ namespace BookStore.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Models.Product", b =>
                 {
                     b.HasOne("BookStore.DataAccess.Models.Author", "Author")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookStore.DataAccess.Models.Ganre", "Ganre")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("GanreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -253,6 +253,13 @@ namespace BookStore.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Models.Author", b =>
                 {
                     b.Navigation("Ganres");
+
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("BookStore.DataAccess.Models.Ganre", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

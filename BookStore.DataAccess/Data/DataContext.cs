@@ -36,6 +36,17 @@ namespace BookStore.DataAccess.Data
                      builder.HasNoKey();
                      builder.ToTable("Order");
                 });
+
+            modelBuilder.Entity <Product>()
+                .HasOne(a => a.Author)
+                .WithMany(g => g.Products)
+                .HasForeignKey(u => u.AuthorId);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(g => g.Ganre)
+                .WithMany(g => g.Products)
+                .HasForeignKey(u => u.GanreId);
+
         }
 
         
