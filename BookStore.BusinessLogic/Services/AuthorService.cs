@@ -9,11 +9,13 @@ namespace BookStore.BusinessLogic.Services
     {
         public readonly IAuthorRepository _authorRepository;
         public readonly IGanreRepository _ganreRepository;
+        public readonly IProductRepository _productRepository;
 
-        public AuthorService(IAuthorRepository authorRepository, IGanreRepository ganreRepository)
+        public AuthorService(IAuthorRepository authorRepository, IGanreRepository ganreRepository, IProductRepository productRepository)
         {
             _authorRepository = authorRepository;
             _ganreRepository = ganreRepository;
+            _productRepository = productRepository;
         }
 
         public async Task Create(CreateAuthorView view)
@@ -30,10 +32,6 @@ namespace BookStore.BusinessLogic.Services
             author.IsActive = true;
 
             List<Ganre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
-
-            
-
-            
 
             await _authorRepository.Create(author);
 

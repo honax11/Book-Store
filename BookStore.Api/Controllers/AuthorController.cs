@@ -40,7 +40,7 @@ namespace Book_Store.Controllers
                 return Ok (await _authorService.FindId(id));
             }
 
-        [HttpPut]
+        [HttpPost]
         public async Task <IActionResult> Update (UpdateAuthorView view)
         {
             await _authorService.Update(view);

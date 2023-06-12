@@ -8,10 +8,14 @@ namespace BookStore.BusinessLogic.Services
     public class ProductService : IProductService
     {
         private IProductRepository _product;
+        private IAuthorRepository _authorRepository;
+        private IGanreRepository _ganreRepository;
 
-        public ProductService (IProductRepository product)
+        public ProductService (IProductRepository product, IAuthorRepository authorRepository, IGanreRepository ganreRepository)
         {
             _product = product;
+            _authorRepository = authorRepository;
+            _ganreRepository = ganreRepository;
         }
 
 
@@ -32,8 +36,11 @@ namespace BookStore.BusinessLogic.Services
             product.Title = view.Title;
             product.TotalPages = view.TotalPages;
             product.Type = view.Type;
+            
 
-          await _product.Create(product);
+             await _product.Create(product);
+
+
         }
 
         public async Task Delete(string id)
@@ -59,7 +66,7 @@ namespace BookStore.BusinessLogic.Services
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _product.GetAll();
+            return await _product.GetProductAll();
         }
 
         public async Task Update(UpdateProductView view)

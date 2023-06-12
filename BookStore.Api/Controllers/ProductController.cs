@@ -34,7 +34,7 @@ namespace Book_Store.Controllers
         {
             return Ok (await _product.FindId(id));
         }
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Update(UpdateProductView view)
         {
              await _product.Update(view);
