@@ -4,5 +4,7 @@ export interface Author {
     id: string,
     firstName: string,
     secondName: string,
-    ganres: Genre[]
+    ganres: string[],
+    products: string[]
+
 }

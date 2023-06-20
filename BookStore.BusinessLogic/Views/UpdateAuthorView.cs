@@ -11,7 +11,7 @@ namespace BookStore.BusinessLogic.Views
         public DateTime? DayOfDeath { get; set; }
         public string GanreId { get; set; }
         public List<string> Ganres {get; set;}
-        public List<Product> Products {get; set;}
+        public List<string> Products {get; set;}
         public bool IsActive {get; set;}
     }
 }

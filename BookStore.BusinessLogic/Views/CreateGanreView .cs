@@ -5,7 +5,6 @@ namespace BookStore.BusinessLogic.Views
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public  List<string> Authors {get; set;}
         
     }
 }

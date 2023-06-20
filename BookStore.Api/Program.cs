@@ -15,6 +15,10 @@ builder.Services
     .AddDbContext<DataContext>(opt =>
     opt.UseSqlite( connectionString,
         b => b.MigrationsAssembly("BookStore.Api")));
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

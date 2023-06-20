@@ -10,8 +10,8 @@ namespace BookStore.BusinessLogic.Views
         public string Title { get; set; }
         public double Prace { get; set; }
         public double SalePrice { get; set; }
-        public List<Author> authors { get; set; }
-        public List<Ganre> ganres { get; set; }
+        public string AuthorsId { get; set; }
+        public string GanreId { get; set; }
 
         
     }

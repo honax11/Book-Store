@@ -15,5 +15,9 @@ export const AUTHORS_TABLE_COLUMNS: Column<Author>[] = [
     {
         Header: "Last Name",
         accessor: "secondName"
+    },
+    {
+        Header: "Ganres",
+        accessor: "ganres"
     }
 ]

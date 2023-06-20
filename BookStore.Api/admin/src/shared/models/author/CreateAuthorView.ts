@@ -3,5 +3,6 @@ export interface CreateAuthorView {
     secondName: string,
     birthDay: Date,
     dayOfDeath?: Date,
-    ganres: string[]
+    ganres: string[],
+    products: string[]
 }

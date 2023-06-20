@@ -22,6 +22,7 @@ export const CreateDesignerPopup = (props: Props) => {
     const [birthDay, setBirthDay] = React.useState(new Date());
     const [dayOfDeath, setDayOfDeath] = React.useState(new Date());
     const [ganres, setGanres] = useState<string[]>([]);
+    const [products, setProducts] = useState<string[]>([]);
 
     const onSubmitForm = (event: any) => {
         debugger;
@@ -32,7 +33,8 @@ export const CreateDesignerPopup = (props: Props) => {
             secondName: secondName,
             birthDay: birthDay,
             dayOfDeath: dayOfDeath,
-            ganres: ganres
+            ganres: ganres,
+            products: products
         }
 
         post(`Designer/Create`, authorToCreate)

@@ -27,27 +27,32 @@ namespace BookStore.BusinessLogic.Services
             }
 
             var product = new Product();
-            product.AuthorId =view.AuthorId;
             product.Description = view.Description;
-            product.GanreId = view.GanreId;
             product.Name = view.Name;
             product.Price = view.Price;
             product.SalePrice = view.SalePrice;
             product.Title = view.Title;
             product.TotalPages = view.TotalPages;
             product.Type = view.Type;
+
+            var author = await _authorRepository.FindId(view.AuthorId);
+
+            product.Author = author;
+
+            var ganre = await _ganreRepository.FindId(view.GanreId);
+
+            product.Ganre = ganre;
+
             
 
              await _product.Create(product);
-
-
         }
 
         public async Task Delete(string id)
         {
             var product =  await _product.FindId(id);
 
-            if(product==null)
+            if (product == null)
             {
                 throw new Exception("Product not finde");
             }
@@ -83,6 +88,13 @@ namespace BookStore.BusinessLogic.Services
             update.SalePrice = view.SalePrice;
             update.Title = view.Title;
 
+            var updateAuthor = await _authorRepository.FindId(view.AuthorsId);
+
+            update.Author = updateAuthor;
+
+            var updateGanre = await _ganreRepository.FindId(view.GanreId);
+
+            update.Ganre = updateGanre;
 
             await _product.Update(update);
         }

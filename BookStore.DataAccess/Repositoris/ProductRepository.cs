@@ -11,13 +11,12 @@ namespace BookStore.DataAccess.Repositoris
         {
 
         }
+
         public async Task<List<Product>> GetProductAll()
         {
-            var autors = await _context.Books.Include(a => a.Author).ToListAsync();
-            return autors;
-            var ganres = await _context.Books.Include(g => g.Ganre).ToListAsync();
- 
-            return ganres;
+            var product = await _context.Books.Include(p => p.Ganre).Include(a => a.Author).ToListAsync();
+
+            return product;
 
         }
         

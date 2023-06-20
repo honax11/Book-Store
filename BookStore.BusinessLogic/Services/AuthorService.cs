@@ -33,6 +33,8 @@ namespace BookStore.BusinessLogic.Services
 
             List<Ganre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
 
+            author.Ganres = listGanre;
+
             await _authorRepository.Create(author);
 
         }
