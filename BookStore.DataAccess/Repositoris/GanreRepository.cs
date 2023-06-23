@@ -7,14 +7,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BookStore.DataAccess.Repositoris
 {
-    public class GanreRepository: GenericRepository<Ganre>, IGanreRepository
+    public class GanreRepository : GenericRepository<Ganre>, IGanreRepository
     {
-        public GanreRepository(DataContext context): base (context)
+        public GanreRepository(DataContext context) : base(context)
         {
-            
+
         }
 
-        public async Task <List<Ganre>> ListGanreId(List<string> ids)
+        public async Task<List<Ganre>> ListGanreId(List<string> ids)
         {
             var listGanre = await _context.Genres.Where(g => ids.Contains(g.Id)).ToListAsync();
 

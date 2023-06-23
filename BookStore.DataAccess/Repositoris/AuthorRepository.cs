@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DataAccess.Repositoris
 {
-    public class AuthorRepository: GenericRepository<Author>, IAuthorRepository
+    public class AuthorRepository : GenericRepository<Author>, IAuthorRepository
     {
-        public AuthorRepository (DataContext context): base (context)
+        public AuthorRepository(DataContext context) : base(context)
         {
 
         }

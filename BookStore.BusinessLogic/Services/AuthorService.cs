@@ -2,6 +2,10 @@ using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Security.Cryptography;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BookStore.BusinessLogic.Services
 {
@@ -59,7 +63,7 @@ namespace BookStore.BusinessLogic.Services
 
         public async Task<IEnumerable<Author>> GetAll()
         {
-            
+
             return await _authorRepository.ListGetAll();
         }
 
@@ -67,22 +71,42 @@ namespace BookStore.BusinessLogic.Services
         {
             var update = await _authorRepository.FindId(view.Id);
 
-            if(update == null)
+            if (update == null)
             {
-                throw new Exception ("Author not found");
+                throw new Exception("Author not found");
             }
             update.FirstName = view.FirstName;
             update.SecondName = view.SecondName;
             update.BirthDay = view.BirthDay;
             update.DayOfDeath = view.DayOfDeath;
             update.IsActive = view.IsActive;
-            
+
             List<Ganre> ganres = await _ganreRepository.ListGanreId(view.Ganres);
 
             update.Ganres = ganres;
-            
 
             await _authorRepository.Update(update);
+        }
+
+        public async Task AddGanre(string authorId, string ganreId)
+        {
+            var author = await _authorRepository.FindId(authorId);
+
+            if (author == null)
+            {
+                throw new Exception("");
+            }
+
+            var ganre = await _ganreRepository.FindId(ganreId);
+
+            if (ganre == null)
+            {
+                throw new Exception("");
+            }
+
+            author.Ganres.Add(ganre);
+
+           await _authorRepository.Update(author);
         }
     }
 }

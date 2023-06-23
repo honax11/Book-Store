@@ -11,7 +11,7 @@ namespace BookStore.BusinessLogic.Services
         private IAuthorRepository _authorRepository;
         private IGanreRepository _ganreRepository;
 
-        public ProductService (IProductRepository product, IAuthorRepository authorRepository, IGanreRepository ganreRepository)
+        public ProductService(IProductRepository product, IAuthorRepository authorRepository, IGanreRepository ganreRepository)
         {
             _product = product;
             _authorRepository = authorRepository;
@@ -23,7 +23,7 @@ namespace BookStore.BusinessLogic.Services
         {
             if (view == null)
             {
-                throw new Exception ("Product not create");
+                throw new Exception("Product not create");
             }
 
             var product = new Product();
@@ -43,14 +43,14 @@ namespace BookStore.BusinessLogic.Services
 
             product.Ganre = ganre;
 
-            
 
-             await _product.Create(product);
+
+            await _product.Create(product);
         }
 
         public async Task Delete(string id)
         {
-            var product =  await _product.FindId(id);
+            var product = await _product.FindId(id);
 
             if (product == null)
             {
@@ -66,7 +66,7 @@ namespace BookStore.BusinessLogic.Services
 
         public async Task<Product> FindId(string id)
         {
-            return await _product.FindId(id); 
+            return await _product.FindId(id);
         }
 
         public async Task<IEnumerable<Product>> GetAll()
@@ -78,7 +78,7 @@ namespace BookStore.BusinessLogic.Services
         {
             var update = await _product.FindId(view.Id);
 
-            if(update == null)
+            if (update == null)
             {
                 throw new Exception("Product is not found");
             }

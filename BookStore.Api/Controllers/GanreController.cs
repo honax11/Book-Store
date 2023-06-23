@@ -9,17 +9,17 @@ namespace Book_Store.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class GanreController: ControllerBase
+    public class GanreController : ControllerBase
     {
         private readonly IGanreService _ganre;
 
-        public GanreController (IGanreService ganre)
+        public GanreController(IGanreService ganre)
         {
             _ganre = ganre;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create (CreateGanreView view)
+        public async Task<IActionResult> Create(CreateGanreView view)
         {
             await _ganre.Create(view);
             return Ok();
@@ -28,17 +28,17 @@ namespace Book_Store.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ganre>>> GetAll()
         {
-             return Ok (await _ganre.GetAll());
+            return Ok(await _ganre.GetAll());
         }
 
         [HttpGet]
-        public async Task <ActionResult<Ganre>> FindId (string id)
+        public async Task<ActionResult<Ganre>> FindId(string id)
         {
-            return Ok (await _ganre.FindId(id));
+            return Ok(await _ganre.FindId(id));
         }
 
         [HttpPut]
-        public async Task <IActionResult> Update (UpdateGanreView view)
+        public async Task<IActionResult> Update(UpdateGanreView view)
         {
             await _ganre.Update(view);
             return Ok();
@@ -52,6 +52,6 @@ namespace Book_Store.Controllers
             return Ok();
         }
 
-        
+
     }
 }

@@ -10,7 +10,7 @@ namespace BookStore.DataAccess.Repositoris
         protected DataContext _context;
         protected DbSet<TEntity> _dbSet;
 
-        public GenericRepository (DataContext context)
+        public GenericRepository(DataContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
@@ -20,7 +20,7 @@ namespace BookStore.DataAccess.Repositoris
         {
             _dbSet.Add(item);
             await _context.SaveChangesAsync();
-            
+
         }
 
         public async Task Delete(TEntity item)
