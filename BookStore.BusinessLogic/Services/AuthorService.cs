@@ -106,7 +106,7 @@ namespace BookStore.BusinessLogic.Services
 
             author.Ganres.Add(ganre);
 
-           await _authorRepository.Update(author);
+            await _authorRepository.Update(author);
         }
     }
 }

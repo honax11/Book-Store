@@ -1,15 +1,14 @@
-
 using BookStore.DataAccess.Data;
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace BookStore.DataAccess.Repositoris
+namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 {
-    public class GanreRepository : GenericRepository<Ganre>, IGanreRepository
+    public class GanreEFCoreRepository : GenericEFCoreRepository<Ganre>, IGanreRepository
     {
-        public GanreRepository(DataContext context) : base(context)
+        public GanreEFCoreRepository(DataContext context) : base(context)
         {
 
         }

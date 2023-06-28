@@ -2,7 +2,7 @@
 using BookStore.BusinessLogic.Services;
 using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.DataAccess.Data;
-using BookStore.DataAccess.Repositoris;
+using BookStore.DataAccess.Repositoris.EFCoreRepositories;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,10 +30,10 @@ builder.Services.AddSwaggerGen();
         builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
     }));
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IGanreRepository, GanreRepository>();
+builder.Services.AddScoped<IProductRepository, ProductEFCoreRepository>();
+builder.Services.AddScoped<IGanreRepository, GanreEFCoreRepository>();
 builder.Services.AddScoped<IGanreService, GanreService>();
-builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IAuthorRepository, AuthorEFCoreRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 var app = builder.Build();

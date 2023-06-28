@@ -3,11 +3,11 @@ using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.DataAccess.Repositoris
+namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 {
-    public class ProductRepository : GenericRepository<Product>, IProductRepository
+    public class ProductEFCoreRepository : GenericEFCoreRepository<Product>, IProductRepository
     {
-        public ProductRepository(DataContext contex) : base(contex)
+        public ProductEFCoreRepository(DataContext contex) : base(contex)
         {
 
         }

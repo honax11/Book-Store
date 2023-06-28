@@ -1,16 +1,16 @@
-using BookStore.DataAccess.Data;
-using BookStore.DataAccess.Models;
-using BookStore.DataAccess.Repositoris.Interfaces;
+﻿using BookStore.DataAccess.Data;
+using BookStore.DataAccess.Repositoris.EFCoreRepositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.DataAccess.Repositoris
+
+namespace BookStore.DataAccess.Repositoris.DapperRepositories
 {
-    public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
+    internal class GenericDapperRepository
     {
         protected DataContext _context;
-        protected DbSet<TEntity> _dbSet;
+        protected DbSet<T> _dbSet;
 
-        public GenericRepository(DataContext context)
+        public GenericEFCoreRepository(DataContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
@@ -45,4 +45,5 @@ namespace BookStore.DataAccess.Repositoris
             await _context.SaveChangesAsync();
         }
     }
+}
 }
