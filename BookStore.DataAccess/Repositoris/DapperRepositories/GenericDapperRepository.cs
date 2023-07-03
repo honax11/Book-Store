@@ -1,49 +1,63 @@
 ﻿using BookStore.DataAccess.Data;
+using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.EFCoreRepositories;
+using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
-
+using System.Data;
+using System.Data.SqlClient;
 
 namespace BookStore.DataAccess.Repositoris.DapperRepositories
 {
-    internal class GenericDapperRepository
+    public abstract class GenericDapperRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        protected DataContext _context;
-        protected DbSet<T> _dbSet;
+        public GenericEFCoreRepository coreRepository;
 
-        public GenericEFCoreRepository(DataContext context)
+        string connectionString = null;
+
+        public GenericDapperRepository(string conn)
         {
-            _context = context;
-            _dbSet = context.Set<TEntity>();
+            connectionString = conn;
 
         }
         public async Task Create(TEntity item)
         {
-            _dbSet.Add(item);
-            await _context.SaveChangesAsync();
+           using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "INSERT INTO TEntity VALUES ";
+                db.Execute(sqlQuery, item);
+            }
 
         }
 
         public async Task Delete(TEntity item)
         {
-            _dbSet.Remove(item);
-            await _context.SaveChangesAsync();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "DELETE FROM Users WHERE Id = @id";
+                db.Execute(sqlQuery, new { id });
+            }
         }
 
         public async Task<TEntity> FindId(string id)
         {
-            return await _dbSet.FindAsync(id);
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<TEntity>("SELECT * FROM TEntity WHERE Id = @id", new { id }).FirstOrDefault();
+            }
         }
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
-            return await _dbSet.AsNoTracking().ToListAsync();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<TEntity>("SELECT * FROM TEntity").ToList();
+            }
         }
 
         public async Task Update(TEntity item)
         {
-            _context.Entry(item).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+           
         }
     }
 }
-}
+
