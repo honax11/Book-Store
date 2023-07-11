@@ -23,7 +23,7 @@ namespace BookStore.DataAccess.Data
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlite();
+                options.UseSqlite("A FALLBACK CONNECTION STRING");
             }
 
         }
