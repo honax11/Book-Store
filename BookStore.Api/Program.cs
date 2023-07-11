@@ -2,6 +2,7 @@
 using BookStore.BusinessLogic.Services;
 using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.DataAccess.Data;
+using BookStore.DataAccess.Repositoris.DapperRepositories;
 using BookStore.DataAccess.Repositoris.EFCoreRepositories;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+builder.Services.AddSingleton<DapperContext>();
+//builder.Services.AddScoped<IGenericRepository<Te>, GenericDapperRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

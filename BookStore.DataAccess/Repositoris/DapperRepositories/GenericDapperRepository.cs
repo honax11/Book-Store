@@ -1,4 +1,5 @@
-﻿using BookStore.DataAccess.Models;
+﻿using BookStore.DataAccess.Data;
+using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Dapper;
 using Dapper.Contrib.Extensions;
@@ -17,35 +18,32 @@ namespace BookStore.DataAccess.Repositoris.DapperRepositories
 
     public abstract class GenericDapperRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly string _tableName;
-        private readonly IConfiguration _configuration;
+        private readonly DapperContext _dapperContext;
 
-        public GenericDapperRepository (string tableName, IConfiguration configuration)
+        public GenericDapperRepository (DapperContext dapperContext)
         {
-            _tableName = tableName;
-            _configuration = configuration;
+            _dapperContext = dapperContext;
         }
-        /// <summary>
-        /// This method adds a new product to the database using Dapper
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns>int</returns>
 
         public async Task Create(TEntity item)
         {
-            using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            var querty = "INSERT INTRO  VALUES";
+
+            List<TEntity> items = new List<TEntity>();
+
+            using (var connection = _dapperContext.CreateConnection())
             {
-                List<TEntity> items = new List<TEntity>();
-                db.InsertAsync<List<TEntity>>(items);
+
+                await connection.ExecuteAsync(querty, items);
 
             }
         }
 
         public async Task Delete(TEntity item)
         {
-            using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = _dapperContext.CreateConnection())
             {
-                await db.DeleteAsync<TEntity>(item);
+                await connection.DeleteAsync<TEntity>(item);
                 //await connection.ExecuteAsync($"DELETE FROM {_tableName} WHERE Id=@Id", new { Id = item });
             }
         }
@@ -53,11 +51,13 @@ namespace BookStore.DataAccess.Repositoris.DapperRepositories
 
         public async Task<TEntity> FindId(string id)
         {
-            using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            var query = "SELECT * FROM {TEntity} WHERE Id = @Id";
+
+            using (var connection = _dapperContext.CreateConnection())
             {
-                var result = await db.QuerySingleOrDefaultAsync($"SELECT * FROM {_tableName} WHERE Id=@Id", new { Id = id });
+                var result = await connection.QuerySingleOrDefaultAsync<TEntity>(query, new { id });
                 if (result == null)
-                    throw new KeyNotFoundException($"{_tableName} with id [{id}] could not be found.");
+                    throw new KeyNotFoundException($" with id [{id}] could not be found.");
 
                 return result;
             }
@@ -65,18 +65,21 @@ namespace BookStore.DataAccess.Repositoris.DapperRepositories
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
-            using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            var querty = "SELECT * FROM ";
+            using (var connection = _dapperContext.CreateConnection())
             {
-                return await db.QueryAsync<TEntity>($"SELECT * FROM {_tableName}");
+                var db = await connection.QueryAsync<TEntity>(querty);
+
+                return db.ToList();
             }
         }
 
         public async Task Update(TEntity item)
         {
-            using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = _dapperContext.CreateConnection())
             {
                 List<TEntity> items = new List<TEntity>();
-                await db.UpdateAsync<List<TEntity>>(items);
+                await connection.UpdateAsync<List<TEntity>>(items);
             }
         }
     }
