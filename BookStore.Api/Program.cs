@@ -5,6 +5,8 @@ using BookStore.DataAccess.Data;
 using BookStore.DataAccess.Repositoris.EFCoreRepositories;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -45,6 +47,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

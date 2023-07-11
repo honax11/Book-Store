@@ -9,7 +9,5 @@ namespace BookStore.DataAccess.Repositoris.Interfaces
         Task Delete (TEntity item);
         Task <TEntity> FindId (string id);
         Task <IEnumerable<TEntity>> GetAll();
-
-        
     }
 }
