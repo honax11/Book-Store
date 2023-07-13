@@ -3,6 +3,7 @@ using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -18,46 +19,38 @@ namespace BookStore.DataAccess.Repositoris.DapperRepositories
 
     public abstract class GenericDapperRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly DapperContext _dapperContext;
+        private readonly IConfiguration _configuration;
+        private readonly string _connectionString;
 
-        public GenericDapperRepository (DapperContext dapperContext)
+        protected IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+
+        public GenericDapperRepository (IConfiguration configuration)
         {
-            _dapperContext = dapperContext;
+            _configuration = configuration;
+            _connectionString = _configuration.GetConnectionString("DefaultConnection");
         }
 
         public async Task Create(TEntity item)
-        {
-            var querty = "INSERT INTRO  VALUES";
-
-            List<TEntity> items = new List<TEntity>();
-
-            using (var connection = _dapperContext.CreateConnection())
+        { 
+            using (var connection = CreateConnection())
             {
-
-                await connection.ExecuteAsync(querty, items);
-
+                await connection.InsertAsync<TEntity>(item);
             }
         }
 
         public async Task Delete(TEntity item)
         {
-            using (var connection = _dapperContext.CreateConnection())
+            using (var connection = CreateConnection())
             {
                 await connection.DeleteAsync<TEntity>(item);
-                //await connection.ExecuteAsync($"DELETE FROM {_tableName} WHERE Id=@Id", new { Id = item });
             }
         }
     
-
         public async Task<TEntity> FindId(string id)
         {
-            var query = "SELECT * FROM {TEntity} WHERE Id = @Id";
-
-            using (var connection = _dapperContext.CreateConnection())
+            using (var connection = CreateConnection())
             {
-                var result = await connection.QuerySingleOrDefaultAsync<TEntity>(query, new { id });
-                if (result == null)
-                    throw new KeyNotFoundException($" with id [{id}] could not be found.");
+                var result = await connection.QuerySingleOrDefaultAsync<TEntity>(id);
 
                 return result;
             }
@@ -65,21 +58,20 @@ namespace BookStore.DataAccess.Repositoris.DapperRepositories
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
-            var querty = "SELECT * FROM ";
-            using (var connection = _dapperContext.CreateConnection())
+            using (var connection = CreateConnection())
             {
-                var db = await connection.QueryAsync<TEntity>(querty);
+              var result = await connection.GetAllAsync<TEntity>();
 
-                return db.ToList();
+              return result;
+                
             }
         }
 
         public async Task Update(TEntity item)
         {
-            using (var connection = _dapperContext.CreateConnection())
+            using (var connection = CreateConnection())
             {
-                List<TEntity> items = new List<TEntity>();
-                await connection.UpdateAsync<List<TEntity>>(items);
+                await connection.UpdateAsync<TEntity>(item);
             }
         }
     }
