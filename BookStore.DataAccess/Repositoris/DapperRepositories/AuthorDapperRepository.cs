@@ -2,35 +2,23 @@
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BookStore.DataAccess.Repositoris.DapperRepositories
 {
     public class AuthorDapperRepository : GenericDapperRepository<Author>, IAuthorRepository
     {
-        private readonly DapperContext _dapperContext;
+        private readonly IConfiguration _configuration;
 
-        public AuthorDapperRepository(DapperContext dapperContext) : base(dapperContext)
+        public AuthorDapperRepository(IConfiguration configuration) : base(configuration)
         {
-            _dapperContext = dapperContext;
+            _configuration = configuration;
         }
 
-        async Task<IEnumerable<Author>> IAuthorRepository.GetCompanies()
-        {
-            var query = "SELECT * FROM Author";
-
-            using (var connection = _dapperContext.CreateConnection())
-            {
-                var companies = await connection.QueryAsync<Author>(query);
-                return companies.ToList();
-            }
-        }
-
-        Task<List<Author>> IAuthorRepository.ListGetAll()
+        public Task<List<Author>> ListGetAll()
         {
             throw new NotImplementedException();
         }

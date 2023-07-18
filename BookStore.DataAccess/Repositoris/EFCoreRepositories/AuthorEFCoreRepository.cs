@@ -13,11 +13,6 @@ namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 
         }
 
-        public Task<IEnumerable<Author>> GetCompanies()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<Author>> ListGetAll()
         {
             var ganresAthor = await _context.Authors.Include(a => a.Ganres).ToListAsync();
