@@ -38,6 +38,8 @@ builder.Services.AddScoped<IGanreRepository, GanreEFCoreRepository>();
 builder.Services.AddScoped<IGanreService, GanreService>();
 builder.Services.AddScoped<IAuthorRepository, AuthorEFCoreRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBannerRepository, BannerEFCoreRepository>();
+builder.Services.AddScoped<IBannerService, BannerService>();
 
 var app = builder.Build();
 
