@@ -1,6 +1,7 @@
 ﻿
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace BookStore.BusinessLogic.Services.Interfaces

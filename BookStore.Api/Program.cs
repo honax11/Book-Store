@@ -1,4 +1,5 @@
 
+using BookStore.BusinessLogic.Helfer;
 using BookStore.BusinessLogic.Services;
 using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.DataAccess.Data;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var droperBox = builder.Configuration.GetSection("DropBoxAccessToken");
 
 // Add services to the container.
 builder.Services
@@ -40,6 +42,7 @@ builder.Services.AddScoped<IAuthorRepository, AuthorEFCoreRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBannerRepository, BannerEFCoreRepository>();
 builder.Services.AddScoped<IBannerService, BannerService>();
+builder.Services.AddScoped<IFileService, FileService>();
 
 var app = builder.Build();
 

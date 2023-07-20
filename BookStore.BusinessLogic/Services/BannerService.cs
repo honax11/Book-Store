@@ -3,16 +3,20 @@ using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
+using Microsoft.Extensions.Configuration;
+using static Dropbox.Api.Files.SearchMatchTypeV2;
 
 namespace BookStore.BusinessLogic.Services
 {
     public  class BannerService: IBannerService
     {
         private readonly IBannerRepository _bannerRepository;
+        private readonly IConfiguration _configuration;
         
-        public BannerService(IBannerRepository bannerRepository)
+        public BannerService(IBannerRepository bannerRepository, IConfiguration configuration)
         {
             _bannerRepository = bannerRepository;
+            _configuration = configuration;
         }
 
         public async Task Create(CreateBannerView view)
@@ -24,9 +28,12 @@ namespace BookStore.BusinessLogic.Services
             Banner banner = new Banner();
             banner.Name = view.Name;
             banner.Order = view.Order;
-            banner.Url = view.Url;
+            banner.Url = Path.GetExtension(view.Url);
             banner.IsActive = true;
 
+            byte[] url = await _bannerRepository.GetFile(view.Url);
+            
+      
 
             await _bannerRepository.Create(banner);
         }
