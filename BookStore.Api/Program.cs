@@ -1,5 +1,6 @@
 
 using BookStore.BusinessLogic.Helfer;
+using BookStore.BusinessLogic.Helfer.Dropbox;
 using BookStore.BusinessLogic.Services;
 using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.DataAccess.Data;
@@ -43,6 +44,7 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBannerRepository, BannerEFCoreRepository>();
 builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IDropBoxFilesService, DropboxFileExchange>();
 
 var app = builder.Build();
 

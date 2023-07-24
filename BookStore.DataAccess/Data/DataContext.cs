@@ -11,6 +11,7 @@ namespace BookStore.DataAccess.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Banner> Banners { get; set; }
+        public DbSet<FileDetails> FileDetails { get; set; }
 
 
 

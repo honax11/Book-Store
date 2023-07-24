@@ -1,4 +1,5 @@
 ﻿
+using BookStore.BusinessLogic.Helfer.Dropbox;
 using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
@@ -11,12 +12,13 @@ namespace BookStore.BusinessLogic.Services
     public  class BannerService: IBannerService
     {
         private readonly IBannerRepository _bannerRepository;
-        private readonly IConfiguration _configuration;
+        private readonly IDropBoxFilesService _dropBoxFilesService;
+       
         
-        public BannerService(IBannerRepository bannerRepository, IConfiguration configuration)
+        public BannerService(IBannerRepository bannerRepository, IDropBoxFilesService dropBoxFilesService)
         {
             _bannerRepository = bannerRepository;
-            _configuration = configuration;
+            _dropBoxFilesService = dropBoxFilesService;
         }
 
         public async Task Create(CreateBannerView view)
@@ -28,10 +30,10 @@ namespace BookStore.BusinessLogic.Services
             Banner banner = new Banner();
             banner.Name = view.Name;
             banner.Order = view.Order;
-            banner.Url = Path.GetExtension(view.Url);
+            banner.Url = await _dropBoxFilesService.GetFile(view.Url);
             banner.IsActive = true;
 
-            byte[] url = await _bannerRepository.GetFile(view.Url);
+           
             
       
 

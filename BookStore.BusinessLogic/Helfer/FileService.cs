@@ -1,6 +1,7 @@
 ﻿
 using BookStore.DataAccess.Data;
 using BookStore.DataAccess.Models;
+using BookStore.DataAccess.Models.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.FileIO;
@@ -16,23 +17,24 @@ namespace BookStore.BusinessLogic.Helfer
             _dbContextClass = dbContextClass;
         }
 
-        public async Task PostFileAsync(IFormFile fileData)
+        public async Task PostFileAsync(IFormFile fileData, FileType fileType)
         {
             try
             {
-                var fileDetails = new Banner()
+                var fileDetails = new FileDetails()
                 {
-                    Name = fileData.FileName,
-                    
+                    ID = 0,
+                    FileName = fileData.FileName,
+                    FileType = fileType,
                 };
 
                 using (var stream = new MemoryStream())
                 {
                     fileData.CopyTo(stream);
-                   // fileDetails.Url = stream.ToString();
+                    fileDetails.FileData = stream.ToArray();
                 }
 
-                var result = _dbContextClass.Banners.Add(fileDetails);
+                var result = _dbContextClass.FileDetails.Add(fileDetails);
                 await _dbContextClass.SaveChangesAsync();
             }
             catch (Exception)
@@ -41,20 +43,26 @@ namespace BookStore.BusinessLogic.Helfer
             }
         }
 
-        public async Task PostMultiFileAsync(List<Banner> fileData)
+        public async Task PostMultiFileAsync(List<FileUploadModel> fileData)
         {
             try
             {
-                foreach (Banner file in fileData)
+                foreach (FileUploadModel file in fileData)
                 {
-                    var fileDetails = new Banner()
+                    var fileDetails = new FileDetails()
                     {
-                        Id = file.Id,
-                        Name = file.Name,
-                        Order = file.Order,
+                        ID = 0,
+                        FileName = file.FileDetails.FileName,
+                        FileType = file.FileType,
                     };
 
-                    var result = _dbContextClass.Banners.Add(fileDetails);
+                    using (var stream = new MemoryStream())
+                    {
+                        file.FileDetails.CopyTo(stream);
+                        fileDetails.FileData = stream.ToArray();
+                    }
+
+                    var result = _dbContextClass.FileDetails.Add(fileDetails);
                 }
                 await _dbContextClass.SaveChangesAsync();
             }
@@ -64,11 +72,18 @@ namespace BookStore.BusinessLogic.Helfer
             }
         }
 
-        public async Task DownloadFileById(string Id)
+        public async Task DownloadFileById(int Id)
         {
             try
             {
-                var file = _dbContextClass.Banners.Where(x => x.Id == Id).FirstOrDefaultAsync();
+                var file = _dbContextClass.FileDetails.Where(x => x.ID == Id).FirstOrDefaultAsync();
+
+                var content = new System.IO.MemoryStream(file.Result.FileData);
+                var path = Path.Combine(
+                   Directory.GetCurrentDirectory(), "FileDownloaded",
+                   file.Result.FileName);
+
+                await CopyStream(content, path);
             }
             catch (Exception)
             {
@@ -82,11 +97,6 @@ namespace BookStore.BusinessLogic.Helfer
             {
                 await stream.CopyToAsync(fileStream);
             }
-        }
-
-        public Task DownloadFileById(int fileName)
-        {
-            throw new NotImplementedException();
         }
     }
 }

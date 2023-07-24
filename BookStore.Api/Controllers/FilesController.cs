@@ -4,88 +4,90 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Book_Store.Controllers
 {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class FilesController : ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public class FilesController : ControllerBase
+    {
+        private readonly IFileService _uploadService;
+
+        public FilesController(IFileService uploadService)
         {
-            private readonly IFileService _uploadService;
+            _uploadService = uploadService;
+        }
 
-            public FilesController(IFileService uploadService)
+        /// <summary>
+        /// Single File Upload
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost("PostSingleFile")]
+        public async Task<ActionResult> PostSingleFile([FromForm] FileUploadModel fileDetails)
+        {
+            if (fileDetails == null)
             {
-                _uploadService = uploadService;
+                return BadRequest();
             }
 
-            /// <summary>
-            /// Single File Upload
-            /// </summary>
-            /// <param name="file"></param>
-            /// <returns></returns>
-            [HttpPost("PostSingleFile")]
-            public async Task<ActionResult> PostSingleFile(IFormFile fileDetails)
+            try
             {
-                if (fileDetails == null)
-                {
-                    return BadRequest();
-                }
-
-                try
-                {
-                    await _uploadService.PostFileAsync(fileDetails);
-                    return Ok();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                await _uploadService.PostFileAsync(fileDetails.FileDetails, fileDetails.FileType);
+                return Ok();
             }
-
-            /// <summary>
-            /// Multiple File Upload
-            /// </summary>
-            /// <param name="file"></param>
-            /// <returns></returns>
-            [HttpPost("PostMultipleFile")]
-            public async Task<ActionResult> PostMultipleFile([FromForm] List<Banner> fileDetails)
+            catch (Exception)
             {
-                if (fileDetails == null)
-                {
-                    return BadRequest();
-                }
-
-                try
-                {
-                    await _uploadService.PostMultiFileAsync(fileDetails);
-                    return Ok();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-
-            /// <summary>
-            /// Download File
-            /// </summary>
-            /// <param name="file"></param>
-            /// <returns></returns>
-            [HttpGet("DownloadFile")]
-            public async Task<ActionResult> DownloadFile(int id)
-            {
-                if (id < 1)
-                {
-                    return BadRequest();
-                }
-
-                try
-                {
-                    await _uploadService.DownloadFileById(id);
-                    return Ok();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                throw;
             }
         }
+
+        /// <summary>
+        /// Multiple File Upload
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost("PostMultipleFile")]
+        public async Task<ActionResult> PostMultipleFile([FromForm] List<FileUploadModel> fileDetails)
+        {
+            if (fileDetails == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await _uploadService.PostMultiFileAsync(fileDetails);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Download File
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpGet("DownloadFile")]
+        public async Task<ActionResult> DownloadFile(int id)
+        {
+            if (id < 1)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await _uploadService.DownloadFileById(id);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
+}
+    
 
