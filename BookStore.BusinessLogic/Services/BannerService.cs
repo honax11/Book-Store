@@ -4,6 +4,7 @@ using BookStore.BusinessLogic.Services.Interfaces;
 using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using static Dropbox.Api.Files.SearchMatchTypeV2;
 
@@ -30,13 +31,8 @@ namespace BookStore.BusinessLogic.Services
             Banner banner = new Banner();
             banner.Name = view.Name;
             banner.Order = view.Order;
-            banner.Url = await _dropBoxFilesService.GetFile(view.Url);
             banner.IsActive = true;
-
-           
             
-      
-
             await _bannerRepository.Create(banner);
         }
 
