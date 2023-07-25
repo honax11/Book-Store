@@ -31,7 +31,12 @@ namespace BookStore.BusinessLogic.Services
             Banner banner = new Banner();
             banner.Name = view.Name;
             banner.Order = view.Order;
+            banner.Url = view.Url;
             banner.IsActive = true;
+
+           // view.Url = await _dropBoxFilesService.Upload(view.FileDetails);
+
+            
             
             await _bannerRepository.Create(banner);
         }
