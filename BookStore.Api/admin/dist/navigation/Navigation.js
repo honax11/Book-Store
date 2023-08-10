@@ -38,7 +38,7 @@ const AppNavigation = () => (react_1.default.createElement(react_router_dom_1.Ro
         ",",
         react_1.default.createElement(react_router_dom_1.Route, { path: url_const_1.SIZE_URL, key: url_const_1.SIZE_URL, element: react_1.default.createElement(SizesContainer_1.SizesContainer, null) }),
         ",",
-        react_1.default.createElement(react_router_dom_1.Route, { path: url_const_1.AUTHOR_URL, key: url_const_1.AUTHOR_URL, element: react_1.default.createElement(AuthorsContainer_1.AuthorsContainer, null) }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: url_const_1.AUTHORS_URL, key: url_const_1.AUTHORS_URL, element: react_1.default.createElement(AuthorsContainer_1.AuthorsContainer, null) }),
         ",",
         react_1.default.createElement(react_router_dom_1.Route, { path: url_const_1.PRODUCTS_URL, key: url_const_1.PRODUCTS_URL, element: react_1.default.createElement(ProductsContainer_1.ProductsContainer, null) }),
         ",",

@@ -6,7 +6,6 @@ export const AUTHORS_TABLE_COLUMNS: Column<Author>[] = [
     {
         Header: "Id",
         accessor: "id"
-
     },
     {
         Header: "First Name",
@@ -17,7 +16,9 @@ export const AUTHORS_TABLE_COLUMNS: Column<Author>[] = [
         accessor: "secondName"
     },
     {
-        Header: "Ganres",
-        accessor: "ganres"
-    }
+        Header: "Delete",
+        accessor: (row) => {
+            return row.isDeleted.toString();
+        }
+    },
 ]

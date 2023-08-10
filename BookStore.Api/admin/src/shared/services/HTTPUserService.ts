@@ -12,7 +12,7 @@ export const upload = async (url:string, file:any) => {
     formData.append("formFile", file.formFile.file);
     formData.append("fileName", file.formFile.file.name);
     formData.append("productId", file.productId);
-    if (file?.order != undefined) {
+    if (file?.order !== undefined) {
       formData.append("order", file.order);
     }
     return await axios.post(process.env.REACT_APP_API_URL + url, formData, {

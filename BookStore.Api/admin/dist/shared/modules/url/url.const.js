@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AMIN_CLICKS = exports.LOCATIONS = exports.PREORDERED_PRODUCT_URL = exports.CUSTOMER_URL = exports.CUSTOMERS_URL = exports.ARTICLE_URL = exports.BLOG_URL = exports.DESIGNER_URL = exports.ORDER_URL = exports.ORDERS_URL = exports.DASHBOARD_URL = exports.PRODUCT_URL = exports.PRODUCTS_URL = exports.BANNER_URL = exports.AUTHOR_URL = exports.SIZE_GENRE = exports.SIZE_URL = exports.URL = exports.MAIN_URL = void 0;
+exports.AMIN_CLICKS = exports.LOCATIONS = exports.PREORDERED_PRODUCT_URL = exports.CUSTOMER_URL = exports.CUSTOMERS_URL = exports.ARTICLE_URL = exports.BLOG_URL = exports.DESIGNER_URL = exports.ORDER_URL = exports.ORDERS_URL = exports.DASHBOARD_URL = exports.PRODUCT_URL = exports.PRODUCTS_URL = exports.BANNER_URL = exports.AUTHORS_URL = exports.SIZE_GENRE = exports.SIZE_URL = exports.URL = exports.MAIN_URL = void 0;
 exports.MAIN_URL = "/";
 exports.URL = "/admin";
 exports.SIZE_URL = "size";
 exports.SIZE_GENRE = "genre";
-exports.AUTHOR_URL = "author";
+exports.AUTHORS_URL = "author";
 exports.BANNER_URL = "banner";
 exports.PRODUCTS_URL = "products";
 exports.PRODUCT_URL = "product/:id";

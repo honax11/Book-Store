@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { get } from "shared/services/HTTPUserService";
-import { AuthorTable } from "../../shared/components/tables/AuthorTable";
+import { AuthorsTable } from "../../shared/components/tables/AuthorsTable";
 import { Author } from "shared/models/author/Author";
 
 export const AuthorsContainer = () => {
@@ -18,6 +18,6 @@ export const AuthorsContainer = () => {
     );
 
     return (
-        <AuthorTable data={authors} refresh={getAllDesigners}></AuthorTable>
+        <AuthorsTable data={authors} refresh={getAllDesigners}></AuthorsTable>
     )
 }

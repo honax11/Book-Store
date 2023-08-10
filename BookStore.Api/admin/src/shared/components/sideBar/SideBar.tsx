@@ -57,61 +57,14 @@ export const SideBar = () => {
 
       <SidebarContent>
         <Menu iconShape="circle">
-          <MenuItem
-            icon={<FaTachometerAlt />}>
-            Dashboard
-            <Link to="/admin" />
-          </MenuItem>
-          <MenuItem icon={<FaGem />}>
-            Banners
-            <Link to="/admin/banner" />
-          </MenuItem>
-          <MenuItem icon={<GiClothes />}>
-            Products
-            <Link to="/admin/products" />
-          </MenuItem>
           <MenuItem icon={<FaRegLaughWink />}>
             ЖАНР
             <Link to="/admin/genre" />
           </MenuItem>
-          {/* <MenuItem icon={<FaHeart />}>
-            Blog
-            <Link to="/admin/blog" />
-          </MenuItem> */}
           <MenuItem icon={<SiHandshake />}>
-            ПИСЬМЕННИК
-            <Link to="/admin/author" />
+            ПИСЬМЕННИКИ
+            <Link to="/admin/authors" />
           </MenuItem>
-          <MenuItem icon={<MdProductionQuantityLimits />}>
-            Orders
-            <Link to="/admin/orders" />
-          </MenuItem>
-          {/* <SubMenu title="Statistics" icon={<BsCurrencyDollar />}>
-            <MenuItem>
-              Customers
-              <Link to="/admin/customers" />
-            </MenuItem>
-            <MenuItem>
-              Pre-ordered Products
-              <Link to="/admin/pre-ordered" />
-            </MenuItem>
-            <MenuItem>
-              Locations
-              <Link to="/admin/locations" />
-            </MenuItem>
-            <MenuItem>
-              Clicks
-              <Link to="/admin/clicks" />
-            </MenuItem>
-            <MenuItem>
-              Phones
-              <Link to="/admin/phones" />
-            </MenuItem>
-            <MenuItem>
-              E-mails
-              <Link to="/admin/e-mails" />
-            </MenuItem>
-          </SubMenu> */}
           <MenuItem icon={<FaExchangeAlt />} onClick={() => changeWidthSidibar()}>
             Change Size
           </MenuItem>
