@@ -13,6 +13,12 @@ namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 
         }
 
+        public async Task<List<Author>> GetAllActive()
+        {
+            var delete = await _context.Authors.Where(b => b.IsDeleted).ToListAsync();
+            return delete;
+        }
+
         public async Task<List<Author>> ListGetAll()
         {
             var ganresAthor = await _context.Authors.Include(a => a.Ganres).ToListAsync();

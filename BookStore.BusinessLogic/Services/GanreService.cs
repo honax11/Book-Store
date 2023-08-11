@@ -4,25 +4,25 @@ using BookStore.DataAccess.Repositoris.Interfaces;
 
 namespace BookStore.BusinessLogic.Services
 {
-    public class GanreService : IGanreService
+    public class GanreService : IGenreService
     {
-        private readonly IGanreRepository _ganre;
+        private readonly IGenreRepository _ganre;
         private readonly IAuthorRepository _authorRepository;
 
-        public GanreService(IGanreRepository ganre, IAuthorRepository authorRepository)
+        public GanreService(IGenreRepository ganre, IAuthorRepository authorRepository)
         {
             _ganre = ganre;
             _authorRepository = authorRepository;
         }
 
-        public async Task Create(CreateGanreView view)
+        public async Task Create(CreateGenreView view)
         {
             if (view == null)
             {
                 throw new Exception("Ganre not create");
             }
 
-            Ganre ganre = new Ganre();
+            Genre ganre = new Genre();
             ganre.Name = view.Name;
             ganre.Description = view.Description;
             ganre.IsActive = true;
@@ -31,7 +31,7 @@ namespace BookStore.BusinessLogic.Services
             await _ganre.Create(ganre);
         }
 
-        public async Task<IEnumerable<Ganre>> GetAll()
+        public async Task<IEnumerable<Genre>> GetAll()
         {
             return await _ganre.GetAll();
         }
@@ -48,12 +48,12 @@ namespace BookStore.BusinessLogic.Services
 
         }
 
-        public async Task<Ganre> FindId(string id)
+        public async Task<Genre> FindId(string id)
         {
             return await _ganre.FindId(id);
         }
 
-        public async Task Update(UpdateGanreView view)
+        public async Task Update(UpdateGenreView view)
         {
             var update = await _ganre.FindId(view.Id);
 

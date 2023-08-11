@@ -11,5 +11,7 @@ namespace BookStore.BusinessLogic.Services.Interfaces
         Task Update (UpdateAuthorView view);
         Task<IEnumerable<Author>> GetAll();
         Task AddGanre(string authorId, string ganreId);
+        Task<IEnumerable<Author>> GetAllAction();
+
     }
 }

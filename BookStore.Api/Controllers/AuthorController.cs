@@ -11,10 +11,10 @@ namespace Book_Store.Controllers
     public class AuthorController : ControllerBase
     {
         private readonly IAuthorService _authorService;
-        private readonly IGanreService _ganreService;
+        private readonly IGenreService _ganreService;
 
 
-        public AuthorController(IAuthorService authorService, IGanreService ganreService)
+        public AuthorController(IAuthorService authorService, IGenreService ganreService)
         {
             _authorService = authorService;
             _ganreService = ganreService;
@@ -39,6 +39,11 @@ namespace Book_Store.Controllers
         public async Task<ActionResult<IEnumerable<Author>>> GetAll()
         {
             return Ok(await _authorService.GetAll());
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Author>>> GetAllAction()
+        {
+            return Ok(await _authorService.GetAllAction());
         }
 
         [HttpGet]

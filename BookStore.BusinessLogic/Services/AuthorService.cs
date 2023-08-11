@@ -12,10 +12,10 @@ namespace BookStore.BusinessLogic.Services
     public class AuthorService : IAuthorService
     {
         public readonly IAuthorRepository _authorRepository;
-        public readonly IGanreRepository _ganreRepository;
+        public readonly IGenreRepository _ganreRepository;
         public readonly IProductRepository _productRepository;
 
-        public AuthorService(IAuthorRepository authorRepository, IGanreRepository ganreRepository, IProductRepository productRepository)
+        public AuthorService(IAuthorRepository authorRepository, IGenreRepository ganreRepository, IProductRepository productRepository)
         {
             _authorRepository = authorRepository;
             _ganreRepository = ganreRepository;
@@ -35,7 +35,7 @@ namespace BookStore.BusinessLogic.Services
             author.DayOfDeath = view.DayOfDeath;
             author.IsActive = true;
 
-            List<Ganre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
+            List<Genre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
 
             author.Ganres = listGanre;
 
@@ -81,7 +81,7 @@ namespace BookStore.BusinessLogic.Services
             update.DayOfDeath = view.DayOfDeath;
             update.IsActive = view.IsActive;
 
-            List<Ganre> ganres = await _ganreRepository.ListGanreId(view.Ganres);
+            List<Genre> ganres = await _ganreRepository.ListGanreId(view.Ganres);
 
             update.Ganres = ganres;
 
@@ -107,6 +107,11 @@ namespace BookStore.BusinessLogic.Services
             author.Ganres.Add(ganre);
 
             await _authorRepository.Update(author);
+        }
+
+        public async Task<IEnumerable<Author>> GetAllAction()
+        {
+            return await _authorRepository.GetAllActive();
         }
     }
 }

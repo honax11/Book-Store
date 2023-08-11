@@ -38,7 +38,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductEFCoreRepository>();
 builder.Services.AddScoped<IGanreRepository, GanreEFCoreRepository>();
-builder.Services.AddScoped<IGanreService, GanreService>();
+builder.Services.AddScoped<IGenreService, GanreService>();
 builder.Services.AddScoped<IAuthorRepository, AuthorEFCoreRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBannerRepository, BannerEFCoreRepository>();

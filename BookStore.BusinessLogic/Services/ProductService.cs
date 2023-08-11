@@ -9,9 +9,9 @@ namespace BookStore.BusinessLogic.Services
     {
         private IProductRepository _product;
         private IAuthorRepository _authorRepository;
-        private IGanreRepository _ganreRepository;
+        private IGenreRepository _ganreRepository;
 
-        public ProductService(IProductRepository product, IAuthorRepository authorRepository, IGanreRepository ganreRepository)
+        public ProductService(IProductRepository product, IAuthorRepository authorRepository, IGenreRepository ganreRepository)
         {
             _product = product;
             _authorRepository = authorRepository;
