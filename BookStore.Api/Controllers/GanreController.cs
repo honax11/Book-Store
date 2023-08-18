@@ -11,9 +11,9 @@ namespace Book_Store.Controllers
     [Route("api/[controller]/[action]")]
     public class GanreController : ControllerBase
     {
-        private readonly IGenreService _ganre;
+        private readonly IGanreService _ganre;
 
-        public GanreController(IGenreService ganre)
+        public GanreController(IGanreService ganre)
         {
             _ganre = ganre;
         }
@@ -26,13 +26,13 @@ namespace Book_Store.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Genre>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Ganre>>> GetAll()
         {
             return Ok(await _ganre.GetAll());
         }
 
         [HttpGet]
-        public async Task<ActionResult<Genre>> FindId(string id)
+        public async Task<ActionResult<Ganre>> FindId(string id)
         {
             return Ok(await _ganre.FindId(id));
         }

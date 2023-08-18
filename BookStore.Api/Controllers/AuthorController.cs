@@ -11,10 +11,10 @@ namespace Book_Store.Controllers
     public class AuthorController : ControllerBase
     {
         private readonly IAuthorService _authorService;
-        private readonly IGenreService _ganreService;
+        private readonly IGanreService _ganreService;
 
 
-        public AuthorController(IAuthorService authorService, IGenreService ganreService)
+        public AuthorController(IAuthorService authorService, IGanreService ganreService)
         {
             _authorService = authorService;
             _ganreService = ganreService;

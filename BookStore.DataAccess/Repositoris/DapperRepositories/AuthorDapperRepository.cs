@@ -18,6 +18,11 @@ namespace BookStore.DataAccess.Repositoris.DapperRepositories
             _configuration = configuration;
         }
 
+        public Task<List<Author>> GetAllActive()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<Author>> ListGetAll()
         {
             throw new NotImplementedException();

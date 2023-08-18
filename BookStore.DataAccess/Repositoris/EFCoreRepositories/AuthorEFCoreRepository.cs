@@ -15,7 +15,7 @@ namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 
         public async Task<List<Author>> GetAllActive()
         {
-            var delete = await _context.Authors.Where(b => b.IsDeleted).ToListAsync();
+            var delete = await _context.Authors.Where(b => !b.IsDeleted).ToListAsync();
             return delete;
         }
 

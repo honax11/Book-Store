@@ -1,4 +1,6 @@
 using BookStore.DataAccess.Models;
+using BookStore.DataAccess.Repositoris.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BookStore.BusinessLogic.Views
 {
@@ -9,6 +11,7 @@ namespace BookStore.BusinessLogic.Views
         public DateTime BirthDay { get; set; }
         public DateTime? DayOfDeath { get; set; }
         public List<string> Ganres {get; set;}
+        public List<string> Products { get; set; }
         
     }
 }

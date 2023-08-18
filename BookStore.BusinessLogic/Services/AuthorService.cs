@@ -12,10 +12,10 @@ namespace BookStore.BusinessLogic.Services
     public class AuthorService : IAuthorService
     {
         public readonly IAuthorRepository _authorRepository;
-        public readonly IGenreRepository _ganreRepository;
+        public readonly IGanreRepository _ganreRepository;
         public readonly IProductRepository _productRepository;
 
-        public AuthorService(IAuthorRepository authorRepository, IGenreRepository ganreRepository, IProductRepository productRepository)
+        public AuthorService(IAuthorRepository authorRepository, IGanreRepository ganreRepository, IProductRepository productRepository)
         {
             _authorRepository = authorRepository;
             _ganreRepository = ganreRepository;
@@ -35,7 +35,7 @@ namespace BookStore.BusinessLogic.Services
             author.DayOfDeath = view.DayOfDeath;
             author.IsActive = true;
 
-            List<Genre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
+            List<Ganre> listGanre = await _ganreRepository.ListGanreId(view.Ganres);
 
             author.Ganres = listGanre;
 
@@ -81,7 +81,7 @@ namespace BookStore.BusinessLogic.Services
             update.DayOfDeath = view.DayOfDeath;
             update.IsActive = view.IsActive;
 
-            List<Genre> ganres = await _ganreRepository.ListGanreId(view.Ganres);
+            List<Ganre> ganres = await _ganreRepository.ListGanreId(view.Ganres);
 
             update.Ganres = ganres;
 

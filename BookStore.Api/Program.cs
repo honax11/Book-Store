@@ -38,11 +38,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductEFCoreRepository>();
 builder.Services.AddScoped<IGanreRepository, GanreEFCoreRepository>();
-builder.Services.AddScoped<IGenreService, GanreService>();
+builder.Services.AddScoped<IGanreService, GanreService>();
 builder.Services.AddScoped<IAuthorRepository, AuthorEFCoreRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBannerRepository, BannerEFCoreRepository>();
 builder.Services.AddScoped<IBannerService, BannerService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderEFCoreRepository>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IDropBoxFilesService, DropboxFileExchange>();
 

@@ -2,9 +2,9 @@ using BookStore.DataAccess.Models;
 
 namespace BookStore.DataAccess.Repositoris.Interfaces
 {
-    public interface IGenreRepository: IGenericRepository<Genre>
+    public interface IGenreRepository: IGenericRepository<Ganre>
     {
-        Task <List<Genre>> ListGanreId (List<string> ids);
+        Task <List<Ganre>> ListGanreId (List<string> ids);
        
     }
 }
