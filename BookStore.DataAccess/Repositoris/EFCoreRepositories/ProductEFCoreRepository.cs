@@ -12,6 +12,13 @@ namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 
         }
 
+        public async Task <List<Product>> GetProductsById (List<string> ids)
+        {
+            var listProduct = await _context.Books.Where(g => ids.Contains(g.Id)).ToListAsync();
+
+            return listProduct;
+        }
+
         public async Task<List<Product>> GetProductAll()
         {
             var product = await _context.Books.Include(p => p.Ganre).Include(a => a.Author).ToListAsync();

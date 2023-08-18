@@ -9,10 +9,12 @@ namespace BookStore.BusinessLogic.Services
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IProductRepository _productRepository;
 
-        public OrderService (IOrderRepository orderRepository)
+        public OrderService (IOrderRepository orderRepository, IProductRepository productRepository)
         {
             _orderRepository = orderRepository;
+            _productRepository = productRepository;
         }
 
         public async Task Create(CreateOrderView view)
@@ -25,10 +27,13 @@ namespace BookStore.BusinessLogic.Services
             var order = new Order();
             order.Name = view.Name;
             order.NumerPost = view.PostIndex;
-            order.Products = view.Products;
             order.Region = view.Region;
             order.TotalOrderPrice = view.TotalOrderPrice;
             order.Сountry = view.Сountry;
+
+            List<Product> productsId = await _productRepository.GetProductsById(view.Products);
+
+           //order.ProductsId = productsId;
 
             await _orderRepository.Create(order);
 
