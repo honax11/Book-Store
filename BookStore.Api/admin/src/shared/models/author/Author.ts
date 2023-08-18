@@ -1,4 +1,4 @@
-import { Genre } from "../genre/Genre";
+import { Ganre } from "../ganre/Ganre";
 
 export interface Author {
     id: string,
@@ -9,5 +9,5 @@ export interface Author {
     secondName: string,
     birthDay: string,
     dayOfDeath?: string,
-    ganres: Genre[],
+    ganres: Ganre[],
 }

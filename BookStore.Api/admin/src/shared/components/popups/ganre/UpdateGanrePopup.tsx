@@ -1,27 +1,27 @@
 import React from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { Genre } from 'shared/models/genre/Genre';
+import { Ganre } from 'shared/models/ganre/Ganre';
 import { post, put } from 'shared/services/Service';
 
 interface Props {
-    genre: Genre;
+    ganre: Ganre;
     modalIsOpen: boolean;
-    setGenre: (cat: Genre) => void;
+    setGanre: (cat: Ganre) => void;
     closeModal: () => void;
     refresh: () => void;
 }
 
-export const UpdateGenrePopup = (props: Props) => {
-    const { genre, modalIsOpen, setGenre, closeModal, refresh } = props;
+export const UpdateGanrePopup = (props: Props) => {
+    const { ganre, modalIsOpen, setGanre, closeModal, refresh } = props;
 
     const setName = (name: string) => {
-        setGenre({ ...genre, name });
+        setGanre({ ...ganre, name });
     }
 
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
-        put(`Ganre/Update`, genre)
+        put(`Ganre/Update`, ganre)
             .then(() => {
                 refresh();
                 setName("");
@@ -44,7 +44,7 @@ export const UpdateGenrePopup = (props: Props) => {
                                 type="name"
                                 placeholder="Category Name"
                                 autoFocus
-                                value={genre?.name}
+                                value={ganre?.name}
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </Form.Group>

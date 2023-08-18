@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import { GenreToCreate } from 'shared/models/genre/GenreToCreate';
+import { GanreToCreate } from 'shared/models/ganre/GanreToCreate';
 import { post } from 'shared/services/Service';
 
 interface Props {
@@ -18,12 +18,12 @@ export const CreateCategoryPopup = (props: Props) => {
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
-        let genreToCreate: GenreToCreate = {
+        let ganreToCreate: GanreToCreate = {
             name: name,
             description: description,
         }
 
-        post(`Ganre/Create`, genreToCreate)
+        post(`Ganre/Create`, ganreToCreate)
             .then(() => {
                 refresh();
                 setName("");
@@ -36,7 +36,7 @@ export const CreateCategoryPopup = (props: Props) => {
         <>
             <Modal show={modalIsOpen} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create Genre</Modal.Title>
+                    <Modal.Title>Create Ganre</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>

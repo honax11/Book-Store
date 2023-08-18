@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { get } from "shared/services/HTTPUserService";
-import { GenreTable } from "../../shared/components/tables/GenreTable";
-import { Genre } from "shared/models/genre/Genre";
+import { GanreTable } from "../../shared/components/tables/GanreTable";
+import { Ganre } from "shared/models/ganre/Ganre";
 
-export const GenresContainer = () => {
-    const [genre, setGenre] = useState<Genre[]>([]);
+export const GanresContainer = () => {
+    const [ganre, setGanre] = useState<Ganre[]>([]);
 
     const getAllGanre = () => {
         get(`Ganre/GetAll`)
             .then((response) => {
-                setGenre(response);
+                setGanre(response);
             });
     };
     useEffect(() => {
@@ -19,7 +19,7 @@ export const GenresContainer = () => {
 
     return (
         <div>
-            <GenreTable data={genre} refresh={() => getAllGanre()}></GenreTable>
+            <GanreTable data={ganre} refresh={() => getAllGanre()}></GanreTable>
         </div>
     )
 }

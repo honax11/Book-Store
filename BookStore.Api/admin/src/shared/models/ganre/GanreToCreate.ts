@@ -1,5 +1,4 @@
-export interface Genre {
-    id: string,
+export interface GanreToCreate {
     name: string,
     description: string
 }

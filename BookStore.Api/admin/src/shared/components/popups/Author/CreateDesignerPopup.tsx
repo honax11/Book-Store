@@ -3,14 +3,14 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import Multiselect from 'multiselect-react-dropdown';
 import { CreateAuthorView } from 'shared/models/author/CreateAuthorView';
-import { Genre } from 'shared/models/genre/Genre';
+import { Ganre } from 'shared/models/ganre/Ganre';
 import { post } from 'shared/services/Service';
 
 interface Props {
     modalIsOpen: boolean;
     closeModal: () => void;
     refresh: () => void;
-    ganresAll: Genre[];
+    ganresAll: Ganre[];
 }
 
 export const CreateDesignerPopup = (props: Props) => {
@@ -46,17 +46,17 @@ export const CreateDesignerPopup = (props: Props) => {
         closeModal();
     }
 
-    const onSelectGenre = (selectedList: any, selectedItem: any) => {
-        let tempGenres = [ ...ganres ];
-        tempGenres.push(selectedItem.id);
-        setGanres(tempGenres);
+    const onSelectGanre = (selectedList: any, selectedItem: any) => {
+        let tempGanres = [ ...ganres ];
+        tempGanres.push(selectedItem.id);
+        setGanres(tempGanres);
     }
 
-    const onRemoveGenre = (selectedList: any, removedItem: any) => {   
+    const onRemoveGanre = (selectedList: any, removedItem: any) => {   
         debugger;     
-        let tempGenres = [ ...ganres ];
-        tempGenres = ganres.filter(x => x !== removedItem.id);
-        setGanres(tempGenres);
+        let tempGanres = [ ...ganres ];
+        tempGanres = ganres.filter(x => x !== removedItem.id);
+        setGanres(tempGanres);
     }
 
     return (
@@ -107,8 +107,8 @@ export const CreateDesignerPopup = (props: Props) => {
                             <Multiselect
                                 id='Ganres'
                                 options={ganresAll}
-                                onSelect={onSelectGenre}
-                                onRemove={onRemoveGenre}
+                                onSelect={onSelectGanre}
+                                onRemove={onRemoveGanre}
                                 displayValue="name"
                                 placeholder="Ganres"
                                 emptyRecordMsg="Всі категорії вибрані" />

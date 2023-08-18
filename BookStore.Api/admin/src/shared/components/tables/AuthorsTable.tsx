@@ -12,7 +12,7 @@ import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { AUTHORS_TABLE_COLUMNS } from './columns/authorsColumns';
 import { UpdateAuthorView } from 'shared/models/author/UpdateAuthorView';
 import { Author } from 'shared/models/author/Author';
-import { Genre } from 'shared/models/genre/Genre';
+import { Ganre } from 'shared/models/ganre/Ganre';
 
 interface Props {
   data: Author[];
@@ -46,7 +46,7 @@ export const AuthorsTable = (props: Props) => {
   const [authorToUpdate, setAuthorToUpdate] = useState<UpdateAuthorView>();
   const [author, setAuthor] = useState<Author>();
 
-  const [ganres, setGanres] = useState<Genre[]>([]);
+  const [ganres, setGanres] = useState<Ganre[]>([]);
 
 
   const openCreateModal = () => {
@@ -74,7 +74,7 @@ export const AuthorsTable = (props: Props) => {
   }
 
   const getAllAuthor = () => {
-    get(`Author/GetAll`)
+    get(`Author/GetAllAction`)
       .then((response) => {
         setGanres(response);
       });

@@ -1,4 +1,4 @@
-import { Genre } from "../genre/Genre";
+import { Ganre } from "../ganre/Ganre";
 
 export interface UpdateAuthorView {    
     id: string,
@@ -7,7 +7,7 @@ export interface UpdateAuthorView {
     birthDay: Date,
     dayOfDeath?: Date,
     gangeId: string,
-    ganres: Genre[],
+    ganres: Ganre[],
     products: string[],
     isAvtive: boolean,
 }

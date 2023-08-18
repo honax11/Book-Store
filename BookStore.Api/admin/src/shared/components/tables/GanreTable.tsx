@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import './tablet.scss';
 import { Button } from 'react-bootstrap';
-import { CreateCategoryPopup } from '../popups/genre/CreateGenrePopup';
-import { UpdateGenrePopup } from '../popups/genre/UpdateGenrePopup';
+import { CreateCategoryPopup } from '../popups/ganre/CreateGanrePopup';
+import { UpdateGanrePopup } from '../popups/ganre/UpdateGanrePopup';
 import { ConfirmationPopup } from 'shared/components/popups/confirmation-popup/ConfirmationPopup';
 import { deleteRequest } from 'shared/services/HTTPUserService';
 import { useSortBy, useTable } from 'react-table';
 import { useColumns } from 'shared/hook/useColumns';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
-import { Genre } from 'shared/models/genre/Genre';
-import { GENRE_TABLE_COLUMNS } from './columns/genreColumns';
+import { Ganre } from 'shared/models/ganre/Ganre';
+import { GANRE_TABLE_COLUMNS } from './columns/ganreColumns';
 
 interface Props {
-  data: Genre[];
+  data: Ganre[];
   refresh: () => void;
 }
 
-export const GenreTable = (props: Props) => {
+export const GanreTable = (props: Props) => {
   const { data, refresh } = props;
-  const columns = useColumns(GENRE_TABLE_COLUMNS);
+  const columns = useColumns(GANRE_TABLE_COLUMNS);
   const table = useTable({ columns, data }, useSortBy);
 
   const {
@@ -32,25 +32,25 @@ export const GenreTable = (props: Props) => {
   const [createModalIsOpen, setCreateModalIsOpen] = React.useState(false);
   const [updateModalIsOpen, setUpdateModalIsOpen] = React.useState(false);
   const [confirmation, setConfirmatin] = useState(false);
-  const [genreToDelete, setGenreToDelete] = useState<Genre>();
+  const [ganreToDelete, setGanreToDelete] = useState<Ganre>();
 
-  const [genre, setGenre] = useState<Genre>();
+  const [ganre, setGanre] = useState<Ganre>();
 
   const openCreateModal = () => {
     setCreateModalIsOpen(true);
   }
 
-  const onUpdateGenre = (cat: Genre) => {
-    setGenre(cat);
+  const onUpdateGanre = (cat: Ganre) => {
+    setGanre(cat);
     setUpdateModalIsOpen(true);
   }
 
-  const onDeleteGenre = (data: Genre) => {
-    setGenreToDelete(data);
+  const onDeleteGanre = (data: Ganre) => {
+    setGanreToDelete(data);
     setConfirmatin(true);
   }
 
-  const deleteGenre = (id: string) => {
+  const deleteGanre = (id: string) => {
     deleteRequest(`Ganre/Delete?id=${id}`)
       .then(() => {
         setConfirmatin(false);
@@ -105,8 +105,8 @@ export const GenreTable = (props: Props) => {
                     })
                   }
                   <td className="admin-panel-order-table">
-                    <Button className="btn btn-info btn-btnCategories" onClick={() => onUpdateGenre(row.original)}>Edit</Button>
-                    <Button className="btn btn-danger btn-btnCategories" onClick={() => onDeleteGenre(row.original)}>Delete</Button>
+                    <Button className="btn btn-info btn-btnCategories" onClick={() => onUpdateGanre(row.original)}>Edit</Button>
+                    <Button className="btn btn-danger btn-btnCategories" onClick={() => onDeleteGanre(row.original)}>Delete</Button>
                   </td>
                 </tr>
               );
@@ -116,8 +116,8 @@ export const GenreTable = (props: Props) => {
       </table>
 
       <CreateCategoryPopup modalIsOpen={createModalIsOpen} closeModal={() => setCreateModalIsOpen(false)} refresh={refresh} />
-      {genre && <UpdateGenrePopup modalIsOpen={updateModalIsOpen} closeModal={() => setUpdateModalIsOpen(false)} refresh={refresh} genre={genre} setGenre={setGenre} />}
-      {genreToDelete && <ConfirmationPopup onDelete={() => deleteGenre(genreToDelete.id)} closeModal={() => setConfirmatin(false)} modalIsOpen={confirmation} product={genreToDelete.name} ></ConfirmationPopup>}
+      {ganre && <UpdateGanrePopup modalIsOpen={updateModalIsOpen} closeModal={() => setUpdateModalIsOpen(false)} refresh={refresh} ganre={ganre} setGanre={setGanre} />}
+      {ganreToDelete && <ConfirmationPopup onDelete={() => deleteGanre(ganreToDelete.id)} closeModal={() => setConfirmatin(false)} modalIsOpen={confirmation} product={ganreToDelete.name} ></ConfirmationPopup>}
     </div>
   );
 }

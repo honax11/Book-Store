@@ -1,7 +1,7 @@
 import { Column } from "react-table";
-import { Genre } from "shared/models/genre/Genre";
+import { Ganre } from "shared/models/ganre/Ganre";
 
-export const GENRE_TABLE_COLUMNS: Column<Genre>[] = [
+export const GANRE_TABLE_COLUMNS: Column<Ganre>[] = [
     {
         Header: "Id",
         accessor: "id"

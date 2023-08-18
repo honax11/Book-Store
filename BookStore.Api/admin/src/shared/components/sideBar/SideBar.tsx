@@ -59,7 +59,7 @@ export const SideBar = () => {
         <Menu iconShape="circle">
           <MenuItem icon={<FaRegLaughWink />}>
             ЖАНР
-            <Link to="/admin/genre" />
+            <Link to="/admin/ganre" />
           </MenuItem>
           <MenuItem icon={<SiHandshake />}>
             ПИСЬМЕННИКИ
