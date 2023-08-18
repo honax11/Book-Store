@@ -6,18 +6,18 @@ import { Author } from "shared/models/author/Author";
 export const AuthorsContainer = () => {
     const [authors, setAuthors] = useState<Author[]>([]);
 
-    const getAllDesigners = () => {
-        get(`Author/GetAll`)
+    const getAllAuthor = () => {
+        get(`Author/GetAllAction`)
             .then((response) => {
                 setAuthors(response);
             });
     };
     useEffect(() => {
-        getAllDesigners();
+        getAllAuthor();
     }, []
     );
 
     return (
-        <AuthorsTable data={authors} refresh={getAllDesigners}></AuthorsTable>
+        <AuthorsTable data={authors} refresh={getAllAuthor}></AuthorsTable>
     )
 }
