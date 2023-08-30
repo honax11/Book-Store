@@ -38,6 +38,8 @@ namespace BookStore.DataAccess.Data
                      builder.HasNoKey();
                      builder.ToTable("Order");
                  });
+            modelBuilder.Entity<Order>()
+            .HasKey(o => o.ProductsId);
         }
 
 

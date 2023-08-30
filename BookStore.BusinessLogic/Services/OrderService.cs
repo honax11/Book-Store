@@ -31,9 +31,9 @@ namespace BookStore.BusinessLogic.Services
             order.TotalOrderPrice = view.TotalOrderPrice;
             order.Сountry = view.Сountry;
 
-            List<Product> productsId = await _productRepository.GetProductsById(view.Products);
+            List<Product> productsId = await _productRepository.GetProductsById(view.ProductsId);
 
-           //order.ProductsId = productsId;
+           order.Products = productsId;
 
             await _orderRepository.Create(order);
 

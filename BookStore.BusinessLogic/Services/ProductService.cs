@@ -71,7 +71,7 @@ namespace BookStore.BusinessLogic.Services
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _product.GetProductAll();
+            return await _product.GetAll();
         }
 
         public async Task Update(UpdateProductView view)
