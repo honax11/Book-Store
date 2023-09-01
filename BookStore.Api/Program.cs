@@ -45,6 +45,8 @@ builder.Services.AddScoped<IBannerRepository, BannerEFCoreRepository>();
 builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderRepository, OrderEFCoreRepository>();
+builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemEFCoreRepository>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IDropBoxFilesService, DropboxFileExchange>();
 

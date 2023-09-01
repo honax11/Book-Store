@@ -11,7 +11,8 @@ namespace BookStore.BusinessLogic.Views
         public string Name { get; set; }
         public string PostIndex { get; set; }
         public string NumerPost { get; set; }
-        public List<string> ProductsId { get; set; }
         public double TotalOrderPrice { get; set; }
+        public List<string> Products { get; set; }
+
     }
 }

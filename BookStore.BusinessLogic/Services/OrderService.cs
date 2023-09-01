@@ -3,6 +3,7 @@ using BookStore.BusinessLogic.Views;
 using BookStore.DataAccess.Models;
 using BookStore.DataAccess.Repositoris.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace BookStore.BusinessLogic.Services
 {
@@ -26,14 +27,13 @@ namespace BookStore.BusinessLogic.Services
 
             var order = new Order();
             order.Name = view.Name;
-            order.NumerPost = view.PostIndex;
+            order.PostIndex = view.PostIndex;
             order.Region = view.Region;
             order.TotalOrderPrice = view.TotalOrderPrice;
             order.Сountry = view.Сountry;
+            order.Location = view.Location;
+            order.NumerPost = view.NumerPost;
 
-            List<Product> productsId = await _productRepository.GetProductsById(view.ProductsId);
-
-           order.Products = productsId;
 
             await _orderRepository.Create(order);
 

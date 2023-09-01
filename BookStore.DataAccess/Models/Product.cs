@@ -18,6 +18,7 @@ namespace BookStore.DataAccess.Models
         public double SalePrice { get; set; }
         public virtual ProductType Type {get; set;}
         public string Description { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
 
     }
 }

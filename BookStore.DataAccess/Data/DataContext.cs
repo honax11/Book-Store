@@ -12,6 +12,7 @@ namespace BookStore.DataAccess.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<FileDetails> FileDetails { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
 
 
@@ -35,11 +36,22 @@ namespace BookStore.DataAccess.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Order>(builder =>
                  {
-                     builder.HasNoKey();
+                    // builder.HasNoKey();
                      builder.ToTable("Order");
                  });
-            modelBuilder.Entity<Order>()
-            .HasKey(o => o.ProductsId);
+
+            modelBuilder.Entity<OrderItem>()
+       .HasKey(op => new { op.OrderId, op.ProductId });
+
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(op => op.Order)
+                .WithMany(o => o.OrderItems)
+                .HasForeignKey(op => op.OrderId);
+
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(op => op.Product)
+                .WithMany(p => p.OrderItems)
+                .HasForeignKey(op => op.ProductId);
         }
 
 

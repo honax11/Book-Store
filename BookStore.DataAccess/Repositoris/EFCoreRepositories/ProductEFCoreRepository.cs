@@ -7,16 +7,18 @@ namespace BookStore.DataAccess.Repositoris.EFCoreRepositories
 {
     public class ProductEFCoreRepository : GenericEFCoreRepository<Product>, IProductRepository
     {
-        public ProductEFCoreRepository(DataContext contex) : base(contex)
+        public ProductEFCoreRepository(DataContext context) : base(context)
         {
 
         }
 
-        public async Task <List<Product>> GetProductsById (List<string> ids)
+        public async Task <List<OrderItem>> GetProductsById ()
         {
-            var listProduct = await _context.Books.Where(g => ids.Contains(g.Id)).ToListAsync();
+            var orderItems = await _context.OrderItems
+        .Include(item => item.Product)
+        .ToListAsync();
 
-            return listProduct;
+            return orderItems;
         }
 
         public async Task<List<Product>> GetProductAll()

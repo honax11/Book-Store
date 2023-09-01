@@ -10,9 +10,8 @@ namespace BookStore.DataAccess.Models
         public string Name { get; set; }
         public string PostIndex { get; set; }
         public string NumerPost { get; set; }
-        [ForeignKey("Product")]
-        public string ProductsId { get; set; }
-        public virtual List<Product> Products { get; set; } = new List<Product>();
+        public ICollection<OrderItem> OrderItems { get; set; } 
+       // public virtual List<Product> Products { get; set; } = new List<Product>();
         public double TotalOrderPrice { get; set; }
         
     }
